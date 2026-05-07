@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  /* Couleurs ALPSEREN */
+  --color-icon: #C29B6D;
+  --color-brand: #2D2926;
+  --color-background: #F9F9F9;
+
+  /* Dérivés */
+  --color-brand-muted: rgba(45, 41, 38, 0.60);
+  --color-brand-subtle: rgba(45, 41, 38, 0.20);
+  --color-icon-soft: rgba(194, 155, 109, 0.15);
+
+  /* Typographies */
+  --font-display: var(--font-cinzel), serif;
+  --font-body: var(--font-montserrat), sans-serif;
+
+  /* Letter spacing */
+  --tracking-ultra: 0.3em;
+  --tracking-luxury: 0.15em;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-image: url('/bg-stone.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: #1a1814;
+  color: #F9F9F9;
+  font-family: var(--font-body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-200 { animation-delay: 0.2s; opacity: 0; }
+.delay-400 { animation-delay: 0.4s; opacity: 0; }
+.delay-600 { animation-delay: 0.6s; opacity: 0; }
+
+/* Mobile text background for scroll sections */
+.section-card {
+  padding: 1.5rem;
+  background: rgba(45, 41, 38, 0.82);
+}
+
+@media (min-width: 768px) {
+  .section-card {
+    padding: 0;
+    background: transparent;
+  }
+}
+
+/* Marquee */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
