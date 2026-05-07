@@ -15,15 +15,11 @@ const FRAME_PATH  = (n: number) =>
 interface Props { lang: Lang }
 
 export default function VideoPhone({ lang }: Props) {
-  const wrapperRef        = useRef<HTMLDivElement>(null)
-  const canvasRef         = useRef<HTMLCanvasElement>(null)
-  const phoneFrameRef     = useRef<HTMLDivElement>(null)
-  // 01 / 02 — textes courts
-  const estateRef         = useRef<HTMLDivElement>(null)
-  const lifestyleRef      = useRef<HTMLDivElement>(null)
-  // 03 / 04 — listes détaillées
-  const estateDetailRef   = useRef<HTMLDivElement>(null)
-  const lifestyleDetailRef = useRef<HTMLDivElement>(null)
+  const wrapperRef    = useRef<HTMLDivElement>(null)
+  const canvasRef     = useRef<HTMLCanvasElement>(null)
+  const phoneFrameRef = useRef<HTMLDivElement>(null)
+  const leftRef       = useRef<HTMLDivElement>(null)   // gauche 18–45%
+  const rightRef      = useRef<HTMLDivElement>(null)   // droite 50–80%
 
   useEffect(() => {
     const canvas = canvasRef.current!
@@ -44,13 +40,13 @@ export default function VideoPhone({ lang }: Props) {
       const img = frames[i]
       if (!img?.complete || !img.naturalWidth) return
       const { width: cw, height: ch } = canvas
-      const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight)
+      const s = Math.max(cw / img.naturalWidth, ch / img.naturalHeight)
       ctx.clearRect(0, 0, cw, ch)
       ctx.drawImage(img,
-        (cw - img.naturalWidth  * scale) / 2,
-        (ch - img.naturalHeight * scale) / 2,
-        img.naturalWidth  * scale,
-        img.naturalHeight * scale,
+        (cw - img.naturalWidth  * s) / 2,
+        (ch - img.naturalHeight * s) / 2,
+        img.naturalWidth  * s,
+        img.naturalHeight * s,
       )
     }
 
@@ -77,7 +73,7 @@ export default function VideoPhone({ lang }: Props) {
       const c = document.getElementById('scroll-container')
       if (!c) return
 
-      // ── Frame scrub ───────────────────────────────────────────────────
+      // Frame scrub
       triggers.push(ScrollTrigger.create({
         trigger: c, start: 'top top', end: 'bottom bottom', scrub: true,
         onUpdate(self) {
@@ -86,29 +82,21 @@ export default function VideoPhone({ lang }: Props) {
         },
       }))
 
-      // ── Phone frame : apparaît 13–17% ────────────────────────────────
+      // Phone frame : 13–17%
       push(gsap.fromTo(phoneFrameRef.current, { opacity: 0, scale: 0.97 }, {
         opacity: 1, scale: 1, ease: 'none',
         scrollTrigger: { trigger: c, start: '13% top', end: '17% top', scrub: 1 },
       }))
 
-      // ── 01 / Estate Management — gauche — 18–33% ─────────────────────
-      slideIn (estateRef.current,  -28, '18% top', '22% top')
-      slideOut(estateRef.current,  -28, '29% top', '33% top')
+      // ── Gauche : 0.18 → 0.45 ────────────────────────────────────────
+      slideIn (leftRef.current, -24, '18% top', '22% top')
+      slideOut(leftRef.current, -24, '41% top', '45% top')
 
-      // ── 02 / Lifestyle Services — droite — 36–50% ────────────────────
-      slideIn (lifestyleRef.current,  28, '36% top', '40% top')
-      slideOut(lifestyleRef.current,  28, '46% top', '50% top')
+      // ── Droite : 0.50 → 0.80 ────────────────────────────────────────
+      slideIn (rightRef.current, 24, '50% top', '54% top')
+      slideOut(rightRef.current, 24, '76% top', '80% top')
 
-      // ── 03 / Estate Management détaillé — gauche — 53–67% ────────────
-      slideIn (estateDetailRef.current,  -28, '53% top', '57% top')
-      slideOut(estateDetailRef.current,  -28, '63% top', '67% top')
-
-      // ── 04 / Lifestyle Services détaillé — droite — 70–84% ───────────
-      slideIn (lifestyleDetailRef.current,  28, '70% top', '74% top')
-      slideOut(lifestyleDetailRef.current,  28, '80% top', '84% top')
-
-      // ── VideoPhone s'efface à 95–100% (libère sections statiques) ────
+      // VideoPhone s'efface à 95–100%
       push(gsap.fromTo(wrapperRef.current, { opacity: 1 }, {
         opacity: 0, ease: 'none',
         scrollTrigger: { trigger: c, start: '95% top', end: '100% top', scrub: 1 },
@@ -138,24 +126,19 @@ export default function VideoPhone({ lang }: Props) {
   const sd = translations[lang].servicesDetail
 
   const labelStyle: React.CSSProperties = {
-    fontSize: '0.62rem', color: 'rgba(194,155,109,0.75)',
-    letterSpacing: '0.3em', textTransform: 'uppercase',
-    marginBottom: '1rem',
+    fontSize: '0.6rem', color: 'rgba(194,155,109,0.75)',
+    letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '0.9rem',
   }
   const titleStyle: React.CSSProperties = {
-    color: '#F9F9F9',
+    color: '#F9F9F9', textTransform: 'uppercase', lineHeight: 1.25,
   }
   const bodyStyle: React.CSSProperties = {
-    fontSize: '13px', color: 'rgba(249,249,249,0.6)', lineHeight: 1.7,
+    fontSize: '12px', color: 'rgba(249,249,249,0.58)', lineHeight: 1.7,
   }
-  const dividerStyle: React.CSSProperties = {
-    width: '2rem', height: '1px',
-    backgroundColor: 'rgba(194,155,109,0.4)', margin: '1rem 0',
+  const divStyle: React.CSSProperties = {
+    width: '1.5rem', height: '1px',
+    backgroundColor: 'rgba(194,155,109,0.4)', margin: '0.8rem 0',
   }
-  const panelBase = 'absolute opacity-0'
-  const leftPos   = 'left-8 md:left-14 lg:left-20'
-  const rightPos  = 'right-8 md:right-14 lg:right-20'
-  const maxW      = 'max-w-[220px] md:max-w-xs'
 
   return (
     <div
@@ -163,61 +146,28 @@ export default function VideoPhone({ lang }: Props) {
       className="fixed inset-0 flex items-center justify-center"
       style={{ zIndex: 5 }}
     >
-      {/* ── 01 Estate Management — gauche ────────────────────────── */}
-      <div ref={estateRef}
-        className={`${panelBase} ${leftPos} ${maxW}`}
-        style={{ pointerEvents: 'none' }}
+      {/* ── Panneau gauche — Estate — 18–45% ─────────────────────── */}
+      <div
+        ref={leftRef}
+        className="absolute opacity-0"
+        style={{
+          left:        '2%',
+          maxWidth:    '220px',
+          paddingLeft: '1rem',
+          overflow:    'hidden',
+          pointerEvents: 'none',
+        }}
       >
-        <p className="font-body font-light" style={labelStyle}>{t.estate.label}</p>
-        <h2 className="font-display text-2xl md:text-3xl leading-tight" style={titleStyle}>
+        <p className="font-body font-light" style={labelStyle}>
+          {t.estate.label}
+        </p>
+        <h2 className="font-display text-xl leading-tight" style={titleStyle}>
           {t.estate.heading[0]}<br />{t.estate.heading[1]}
         </h2>
-        <div style={dividerStyle} />
-        <p className="font-body font-light whitespace-pre-line" style={bodyStyle}>
-          {t.estate.body}
-        </p>
-      </div>
-
-      {/* ── 02 Lifestyle Services — droite ───────────────────────── */}
-      <div ref={lifestyleRef}
-        className={`${panelBase} ${rightPos} ${maxW}`}
-        style={{ pointerEvents: 'none' }}
-      >
-        <p className="font-body font-light" style={labelStyle}>{t.lifestyle.label}</p>
-        <h2 className="font-display text-2xl md:text-3xl leading-tight" style={titleStyle}>
-          {t.lifestyle.heading[0]}<br />{t.lifestyle.heading[1]}
-        </h2>
-        <div style={dividerStyle} />
-        <p className="font-body font-light whitespace-pre-line" style={bodyStyle}>
-          {t.lifestyle.body}
-        </p>
-      </div>
-
-      {/* ── 03 Estate Management détaillé — gauche ───────────────── */}
-      <div ref={estateDetailRef}
-        className={`${panelBase} ${leftPos} ${maxW}`}
-        style={{ pointerEvents: 'none' }}
-      >
-        <p className="font-body font-light" style={labelStyle}>03 / Estate Management</p>
-        <ul className="flex flex-col" style={{ gap: '0.6rem' }}>
+        <div style={divStyle} />
+        <ul className="flex flex-col" style={{ gap: '0.5rem' }}>
           {sd.estate.items.map((item, i) => (
-            <li key={i} className="font-body font-light flex items-start gap-2" style={bodyStyle}>
-              <span style={{ color: 'rgba(194,155,109,0.5)', flexShrink: 0 }}>—</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* ── 04 Lifestyle Services détaillé — droite ──────────────── */}
-      <div ref={lifestyleDetailRef}
-        className={`${panelBase} ${rightPos} ${maxW}`}
-        style={{ pointerEvents: 'none' }}
-      >
-        <p className="font-body font-light" style={labelStyle}>04 / Lifestyle Services</p>
-        <ul className="flex flex-col" style={{ gap: '0.6rem' }}>
-          {sd.lifestyle.items.map((item, i) => (
-            <li key={i} className="font-body font-light flex items-start gap-2" style={bodyStyle}>
+            <li key={i} className="font-body font-light flex items-start gap-1.5" style={bodyStyle}>
               <span style={{ color: 'rgba(194,155,109,0.5)', flexShrink: 0 }}>—</span>
               {item}
             </li>
@@ -226,7 +176,8 @@ export default function VideoPhone({ lang }: Props) {
       </div>
 
       {/* ── Cadre iPhone 320 × 650 px ────────────────────────────── */}
-      <div ref={phoneFrameRef}
+      <div
+        ref={phoneFrameRef}
         className="relative flex-shrink-0 opacity-0"
         style={{
           width: '320px', height: '650px', borderRadius: '40px',
@@ -236,13 +187,46 @@ export default function VideoPhone({ lang }: Props) {
           boxShadow: 'inset 1px 0 0 rgba(255,255,255,0.06), inset -1px 0 0 rgba(0,0,0,0.5)',
         }}
       >
-        <div className="absolute top-0 left-1/2 z-10" style={{
-          transform: 'translateX(-50%)',
-          width: '96px', height: '28px',
-          backgroundColor: '#080808', borderRadius: '0 0 20px 20px',
-        }} />
-        <canvas ref={canvasRef}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} />
+        <div
+          className="absolute top-0 left-1/2 z-10"
+          style={{
+            transform: 'translateX(-50%)',
+            width: '96px', height: '28px',
+            backgroundColor: '#080808', borderRadius: '0 0 20px 20px',
+          }}
+        />
+        <canvas
+          ref={canvasRef}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+        />
+      </div>
+
+      {/* ── Panneau droite — Lifestyle — 50–80% ──────────────────── */}
+      <div
+        ref={rightRef}
+        className="absolute right-[2%] opacity-0"
+        style={{
+          maxWidth:     '220px',
+          paddingRight: '1rem',
+          overflow:     'hidden',
+          pointerEvents: 'none',
+        }}
+      >
+        <p className="font-body font-light" style={labelStyle}>
+          {t.lifestyle.label}
+        </p>
+        <h2 className="font-display text-xl leading-tight" style={titleStyle}>
+          {t.lifestyle.heading[0]}<br />{t.lifestyle.heading[1]}
+        </h2>
+        <div style={divStyle} />
+        <ul className="flex flex-col" style={{ gap: '0.5rem' }}>
+          {sd.lifestyle.items.map((item, i) => (
+            <li key={i} className="font-body font-light flex items-start gap-1.5" style={bodyStyle}>
+              <span style={{ color: 'rgba(194,155,109,0.5)', flexShrink: 0 }}>—</span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )
