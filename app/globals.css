@@ -84,6 +84,11 @@ body {
   }
 }
 
+/* Placeholders formulaire contact */
+.contact-input::placeholder {
+  color: rgba(249, 249, 249, 0.7);
+}
+
 /* Marquee */
 @keyframes marquee {
   0%   { transform: translateX(0); }

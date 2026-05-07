@@ -13,130 +13,182 @@ export default function ContactSection({ lang }: Props) {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
 
-  const fieldStyle = {
-    fontSize:      '0.8rem',
-    color:         '#F9F9F9',
-    borderBottom:  '1px solid rgba(249,249,249,0.15)',
-    paddingBottom: '0.7rem',
-    width:         '100%',
+  const inputStyle: React.CSSProperties = {
+    width:          '100%',
+    background:     'transparent',
+    border:         'none',
+    borderBottom:   '1px solid rgba(249,249,249,0.5)',
+    padding:        '1rem 0',
+    color:          '#F9F9F9',
+    fontFamily:     'var(--font-montserrat), sans-serif',
+    fontWeight:     300,
+    fontSize:       '13px',
+    letterSpacing:  '0.05em',
+    marginBottom:   '2rem',
+    outline:        'none',
+    display:        'block',
   }
 
   return (
-    <section style={{ position: 'relative', zIndex: 40 }}>
-
-      {/* Séparateur */}
-      <div style={{ height: '1px', backgroundColor: 'rgba(194,155,109,0.4)' }} />
-
-      <div className="py-16 px-6">
-        <div className="mx-auto" style={{ maxWidth: '440px' }}>
-
-          {/* Label */}
-          <p
-            className="font-body font-light tracking-ultra uppercase mb-10"
-            style={{ fontSize: '0.62rem', color: 'rgba(194,155,109,0.7)' }}
-          >
-            {t.label}
-          </p>
-
-          {sent ? (
-            <p
-              className="font-body font-light tracking-ultra uppercase py-12 text-center"
-              style={{ fontSize: '0.62rem', color: 'rgba(249,249,249,0.4)' }}
-            >
-              {t.sent}
-            </p>
-          ) : (
-            <form
-              onSubmit={e => { e.preventDefault(); setSent(true) }}
-              className="flex flex-col"
-              style={{ gap: '2rem' }}
-            >
-              <input
-                type="text"
-                required
-                placeholder={t.name}
-                value={form.name}
-                onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                className="font-body font-light bg-transparent outline-none transition-colors duration-300"
-                style={fieldStyle}
-                onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.45)')}
-                onBlur={e  => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.15)')}
-              />
-
-              <input
-                type="email"
-                required
-                placeholder={t.email}
-                value={form.email}
-                onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                className="font-body font-light bg-transparent outline-none transition-colors duration-300"
-                style={fieldStyle}
-                onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.45)')}
-                onBlur={e  => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.15)')}
-              />
-
-              <textarea
-                required
-                rows={3}
-                placeholder={t.message}
-                value={form.message}
-                onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                className="font-body font-light bg-transparent outline-none resize-none transition-colors duration-300"
-                style={fieldStyle}
-                onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.45)')}
-                onBlur={e  => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.15)')}
-              />
-
-              {/* Bouton centré */}
-              <div className="flex justify-center pt-2">
-                <button
-                  type="submit"
-                  className="font-body font-light tracking-ultra uppercase transition-colors duration-300"
-                  style={{
-                    fontSize:      '0.62rem',
-                    color:         '#F9F9F9',
-                    borderBottom:  '1px solid rgba(194,155,109,0.5)',
-                    paddingBottom: '3px',
-                    background:    'none',
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.9)')}
-                  onMouseLeave={e => (e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.5)')}
-                >
-                  {t.send}
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
-      </div>
-
-      {/* Footer simplifié */}
-      <footer
-        className="flex flex-col items-center py-12 px-6"
-        style={{ borderTop: '1px solid rgba(249,249,249,0.06)' }}
+    <section
+      style={{
+        position:       'relative',
+        zIndex:         40,
+        minHeight:      '100vh',
+        display:        'flex',
+        alignItems:     'center',
+        justifyContent: 'center',
+        paddingTop:     '6rem',
+      }}
+    >
+      <div
+        style={{
+          maxWidth:       '480px',
+          width:          '100%',
+          margin:         '0 auto',
+          padding:        '3rem 2.5rem',
+          background:     'rgba(13,13,11,0.55)',
+          backdropFilter: 'blur(8px)',
+          borderRadius:   '2px',
+        }}
       >
-        <Image
-          src="/logo-white.png"
-          alt="ALPSEREN — Private Estate & Lifestyle"
-          width={160}
-          height={100}
-          className="mb-5"
-          style={{ width: '160px', height: 'auto', opacity: 0.6 }}
-        />
+        {/* Label */}
         <p
-          className="font-body font-light mb-1"
-          style={{ fontSize: '10px', color: 'rgba(249,249,249,0.3)', letterSpacing: '0.04em' }}
+          style={{
+            textAlign:     'center',
+            fontFamily:    'var(--font-montserrat), sans-serif',
+            fontWeight:    300,
+            fontSize:      '11px',
+            letterSpacing: '0.3em',
+            textTransform: 'uppercase',
+            color:         'rgba(194,155,109,1)',
+            marginBottom:  '3rem',
+          }}
         >
-          © 2025 ALPSEREN. Tous droits réservés.
+          03 / CONTACT
         </p>
-        <p
-          className="font-body font-light"
-          style={{ fontSize: '10px', color: 'rgba(249,249,249,0.3)', letterSpacing: '0.04em' }}
-        >
-          Genève, Suisse
-        </p>
-      </footer>
 
+        {/* Séparateur */}
+        <div
+          style={{
+            width:           '32px',
+            height:          '1px',
+            backgroundColor: 'rgba(194,155,109,0.3)',
+            margin:          '0 auto 3rem',
+          }}
+        />
+
+        {sent ? (
+          <p
+            style={{
+              textAlign:     'center',
+              fontFamily:    'var(--font-montserrat), sans-serif',
+              fontWeight:    300,
+              fontSize:      '10px',
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase',
+              color:         'rgba(249,249,249,0.4)',
+              padding:       '3rem 0',
+            }}
+          >
+            {t.sent}
+          </p>
+        ) : (
+          <form onSubmit={e => { e.preventDefault(); setSent(true) }}>
+            <input
+              type="text"
+              required
+              placeholder={t.name}
+              value={form.name}
+              onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+              className="contact-input"
+              style={inputStyle}
+              onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.85)')}
+              onBlur={e  => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.5)')}
+            />
+            <input
+              type="email"
+              required
+              placeholder={t.email}
+              value={form.email}
+              onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+              className="contact-input"
+              style={inputStyle}
+              onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.85)')}
+              onBlur={e  => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.5)')}
+            />
+            <textarea
+              required
+              rows={4}
+              placeholder={t.message}
+              value={form.message}
+              onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+              className="contact-input"
+              style={{ ...inputStyle, resize: 'none' }}
+              onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.85)')}
+              onBlur={e  => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.5)')}
+            />
+
+            <button
+              type="submit"
+              style={{
+                display:        'block',
+                margin:         '3rem auto 0',
+                background:     'none',
+                border:         'none',
+                borderBottom:   '1px solid rgba(194,155,109,0.9)',
+                paddingBottom:  '2px',
+                color:          '#F9F9F9',
+                fontFamily:     'var(--font-montserrat), sans-serif',
+                fontWeight:     300,
+                fontSize:       '11px',
+                letterSpacing:  '0.3em',
+                textTransform:  'uppercase',
+                cursor:         'pointer',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.85)')}
+              onMouseLeave={e => (e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.4)')}
+            >
+              {t.send}
+            </button>
+          </form>
+        )}
+
+        {/* Footer */}
+        <footer style={{ marginTop: '5rem', textAlign: 'center' }}>
+          <Image
+            src="/logo-white.png"
+            alt="ALPSEREN — Private Estate & Lifestyle"
+            width={120}
+            height={75}
+            style={{ width: '120px', height: 'auto', margin: '0 auto', opacity: 0.55 }}
+          />
+          <p
+            style={{
+              fontFamily:    'var(--font-montserrat), sans-serif',
+              fontWeight:    300,
+              fontSize:      '9px',
+              color:         'rgba(249,249,249,0.25)',
+              letterSpacing: '0.04em',
+              marginTop:     '1rem',
+            }}
+          >
+            © 2025 ALPSEREN. Tous droits réservés.
+          </p>
+          <p
+            style={{
+              fontFamily:    'var(--font-montserrat), sans-serif',
+              fontWeight:    300,
+              fontSize:      '9px',
+              color:         'rgba(249,249,249,0.25)',
+              letterSpacing: '0.04em',
+              marginTop:     '0.4rem',
+            }}
+          >
+            Genève, Suisse
+          </p>
+        </footer>
+      </div>
     </section>
   )
 }

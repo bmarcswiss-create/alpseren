@@ -126,14 +126,15 @@ export default function VideoPhone({ lang }: Props) {
   const sd = translations[lang].servicesDetail
 
   const labelStyle: React.CSSProperties = {
-    fontSize: '0.6rem', color: 'rgba(194,155,109,0.75)',
+    fontSize: '11px', color: 'rgba(194,155,109,0.75)',
     letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '0.9rem',
   }
   const titleStyle: React.CSSProperties = {
-    color: '#F9F9F9', textTransform: 'uppercase', lineHeight: 1.25,
+    color: '#F9F9F9', textTransform: 'uppercase',
+    fontSize: '32px', lineHeight: 1.2,
   }
   const bodyStyle: React.CSSProperties = {
-    fontSize: '12px', color: 'rgba(249,249,249,0.58)', lineHeight: 1.7,
+    fontSize: '14px', color: 'rgba(249,249,249,0.58)', lineHeight: 1.9,
   }
   const divStyle: React.CSSProperties = {
     width: '1.5rem', height: '1px',
@@ -152,7 +153,7 @@ export default function VideoPhone({ lang }: Props) {
         className="absolute opacity-0"
         style={{
           left:        '2%',
-          maxWidth:    '220px',
+          maxWidth:    '280px',
           paddingLeft: '1rem',
           overflow:    'hidden',
           pointerEvents: 'none',
