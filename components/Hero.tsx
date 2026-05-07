@@ -33,7 +33,7 @@ export default function Hero({ }: Props) {
       scrollTrigger: {
         trigger: '#scroll-container',
         start: 'top top',
-        end: '8% top',
+        end: '10% top',
         scrub: 1,
         onLeave:     () => { el.style.pointerEvents = 'none' },
         onEnterBack: () => { el.style.pointerEvents = 'auto' },

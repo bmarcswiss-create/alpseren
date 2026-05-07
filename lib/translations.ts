@@ -7,8 +7,7 @@ export const translations = {
       discover: 'Découvrir',
     },
     philosophie: {
-      heading: ["L'Art du", 'Quotidien Accompli'],
-      body: "Parce que chaque propriété d'exception mérite une présence discrète et un soin absolu. Depuis Genève, ALPSEREN prend en charge l'invisible pour que vous viviez l'essentiel.",
+      body: "Derrière chaque grande résidence se cache une exigence invisible : tout doit fonctionner, toujours, sans que cela ne se voie. ALPSEREN est né pour porter cette exigence — avec la discrétion d'un confident, la précision d'un professionnel et la réactivité d'un partenaire toujours présent. Coordination, supervision, esthétique et technologie au service de votre tranquillité.",
     },
     estate: {
       label: '01 / Estate Management',
@@ -21,9 +20,7 @@ export const translations = {
       body: 'Soins aux animaux, transport de chevaux, services sur-mesure.\nVotre quotidien, simplifié.',
     },
     servicesDetail: {
-      heading: 'Nos Services',
       estate: {
-        title: 'Estate Management',
         items: [
           'Ménage régulier et grand nettoyage',
           'Entretien des jardins et espaces extérieurs',
@@ -33,7 +30,6 @@ export const translations = {
         ],
       },
       lifestyle: {
-        title: 'Lifestyle Services',
         items: [
           'Soins aux animaux de compagnie',
           'Transport et logistique équestre',
@@ -42,7 +38,6 @@ export const translations = {
           'Accompagnement administratif du quotidien',
         ],
       },
-      tech: 'Disponibilité permanente. Reporting transparent. Confidentialité absolue.',
     },
     contact: {
       label: '03 / Contact',
@@ -59,8 +54,7 @@ export const translations = {
       discover: 'Discover',
     },
     philosophie: {
-      heading: ['The Art of', 'Accomplished Living'],
-      body: 'Because every exceptional property deserves discreet presence and absolute care. From Geneva, ALPSEREN handles the invisible so you can live what matters most.',
+      body: "Behind every great residence lies an invisible requirement: everything must work, always, without it being noticed. ALPSEREN was born to carry this requirement — with the discretion of a confidant, the precision of a professional and the responsiveness of a partner always present. Coordination, supervision, aesthetics and technology at the service of your peace of mind.",
     },
     estate: {
       label: '01 / Estate Management',
@@ -73,9 +67,7 @@ export const translations = {
       body: 'Animal care, horse transport, bespoke services.\nYour daily life, simplified.',
     },
     servicesDetail: {
-      heading: 'Our Services',
       estate: {
-        title: 'Estate Management',
         items: [
           'Regular housekeeping and deep cleaning',
           'Garden and outdoor space maintenance',
@@ -85,7 +77,6 @@ export const translations = {
         ],
       },
       lifestyle: {
-        title: 'Lifestyle Services',
         items: [
           'Pet care and companion animal services',
           'Horse transport and equestrian logistics',
@@ -94,7 +85,6 @@ export const translations = {
           'Daily administrative support',
         ],
       },
-      tech: 'Constant availability. Transparent reporting. Absolute confidentiality.',
     },
     contact: {
       label: '03 / Contact',
