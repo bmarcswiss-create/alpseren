@@ -177,7 +177,7 @@ export default function VideoPhone({ lang }: Props) {
       style={{ zIndex: 5 }}
     >
       {/* 01 Estate brief — gauche */}
-      <div ref={leftBriefRef} style={{ ...leftPanel, opacity: 0 }}>
+      <div ref={leftBriefRef} className="phone-panel" style={{ ...leftPanel, opacity: 0 }}>
         <p className="font-body font-light" style={labelStyle}>{t.estate.label}</p>
         <h2 className="font-display" style={titleStyle}>
           {t.estate.heading[0]}<br />{t.estate.heading[1]}
@@ -189,7 +189,7 @@ export default function VideoPhone({ lang }: Props) {
       </div>
 
       {/* 02 Lifestyle brief — droite */}
-      <div ref={rightBriefRef} style={{ ...rightPanel, opacity: 0 }}>
+      <div ref={rightBriefRef} className="phone-panel" style={{ ...rightPanel, opacity: 0 }}>
         <p className="font-body font-light" style={labelStyle}>{t.lifestyle.label}</p>
         <h2 className="font-display" style={titleStyle}>
           {t.lifestyle.heading[0]}<br />{t.lifestyle.heading[1]}
@@ -201,7 +201,7 @@ export default function VideoPhone({ lang }: Props) {
       </div>
 
       {/* 03 Estate détaillé — gauche */}
-      <div ref={leftDetailRef} style={{ ...leftPanel, opacity: 0 }}>
+      <div ref={leftDetailRef} className="phone-panel" style={{ ...leftPanel, opacity: 0 }}>
         <p className="font-body font-light" style={labelStyle}>03 / Estate Management</p>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.estate.items.map((item, i) => (
@@ -214,7 +214,7 @@ export default function VideoPhone({ lang }: Props) {
       </div>
 
       {/* 04 Lifestyle détaillé — droite */}
-      <div ref={rightDetailRef} style={{ ...rightPanel, opacity: 0 }}>
+      <div ref={rightDetailRef} className="phone-panel" style={{ ...rightPanel, opacity: 0 }}>
         <p className="font-body font-light" style={labelStyle}>04 / Lifestyle Services</p>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.lifestyle.items.map((item, i) => (
@@ -229,6 +229,7 @@ export default function VideoPhone({ lang }: Props) {
       {/* Cadre iPhone 320 × 650 px */}
       <div
         ref={phoneFrameRef}
+        className="phone-frame-container"
         style={{
           opacity: 0, flexShrink: 0,
           width: '320px', height: '650px', borderRadius: '40px',
