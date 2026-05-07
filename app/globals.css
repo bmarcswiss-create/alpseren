@@ -91,27 +91,9 @@ body {
     height: calc(75vw * 2.03125) !important; /* ratio 320/650 */
   }
 
+  /* Panneaux gauche/droite : masqués sur mobile — remplacés par MobileServices */
   .phone-panel {
-    position:   absolute !important;
-    bottom:     2.5rem !important;
-    top:        auto !important;
-    left:       1.5rem !important;
-    right:      1.5rem !important;
-    max-width:  100% !important;
-    padding:    0 !important;
-    text-align: center !important;
-  }
-
-  .phone-panel h2 {
-    font-size: 22px !important;
-  }
-
-  .phone-panel ul {
-    align-items: center;
-  }
-
-  .phone-panel li {
-    justify-content: center !important;
+    display: none !important;
   }
 }
 

@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import VideoPhone from '@/components/VideoPhone'
 import ScrollSections from '@/components/ScrollSections'
+import MobileServices from '@/components/MobileServices'
 import ContactSection from '@/components/ContactSection'
 
 export default function Home() {
@@ -21,6 +22,9 @@ export default function Home() {
 
       {/* ── Driver scroll : 600 vh ≈ 2.5 vh / frame ── */}
       <div id="scroll-container" style={{ height: '600vh' }} />
+
+      {/* ── Blocs mobile — visibles uniquement après le scroll vidéo sur mobile ── */}
+      <MobileServices lang={lang} />
 
       {/* ── Section statique ── */}
       <ContactSection lang={lang} />
