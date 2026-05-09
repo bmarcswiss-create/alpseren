@@ -10,8 +10,10 @@ interface Props {
 
 export default function ContactSection({ lang }: Props) {
   const t = translations[lang].contact
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [form, setForm]       = useState({ name: '', email: '', message: '' })
+  const [sent, setSent]       = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError]     = useState(false)
 
   const inputStyle: React.CSSProperties = {
     width:          '100%',
@@ -42,6 +44,7 @@ export default function ContactSection({ lang }: Props) {
       }}
     >
       <div
+        className="contact-card"
         style={{
           maxWidth:       '480px',
           width:          '100%',
@@ -65,7 +68,7 @@ export default function ContactSection({ lang }: Props) {
             marginBottom:  '3rem',
           }}
         >
-          03 / CONTACT
+          05 / CONTACT
         </p>
 
         {/* Séparateur */}
@@ -84,17 +87,33 @@ export default function ContactSection({ lang }: Props) {
               textAlign:     'center',
               fontFamily:    'var(--font-montserrat), sans-serif',
               fontWeight:    300,
-              fontSize:      '10px',
-              letterSpacing: '0.3em',
-              textTransform: 'uppercase',
-              color:         'rgba(249,249,249,0.4)',
+              fontSize:      '13px',
+              letterSpacing: '0.05em',
+              color:         'rgba(194,155,109,0.8)',
               padding:       '3rem 0',
             }}
           >
-            {t.sent}
+            Votre message a été envoyé.
           </p>
         ) : (
-          <form onSubmit={e => { e.preventDefault(); setSent(true) }}>
+          <form onSubmit={async e => {
+            e.preventDefault()
+            setSending(true)
+            setError(false)
+            try {
+              const res = await fetch('/api/contact', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify(form),
+              })
+              if (!res.ok) throw new Error()
+              setSent(true)
+            } catch {
+              setError(true)
+            } finally {
+              setSending(false)
+            }
+          }}>
             <input
               type="text"
               required
@@ -131,6 +150,7 @@ export default function ContactSection({ lang }: Props) {
 
             <button
               type="submit"
+              disabled={sending}
               style={{
                 display:        'block',
                 margin:         '3rem auto 0',
@@ -144,26 +164,43 @@ export default function ContactSection({ lang }: Props) {
                 fontSize:       '11px',
                 letterSpacing:  '0.3em',
                 textTransform:  'uppercase',
-                cursor:         'pointer',
+                cursor:         sending ? 'default' : 'pointer',
+                opacity:        sending ? 0.5 : 1,
               }}
-              onMouseEnter={e => (e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.85)')}
-              onMouseLeave={e => (e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.4)')}
+              onMouseEnter={e => { if (!sending) e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.85)' }}
+              onMouseLeave={e => { if (!sending) e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.4)' }}
             >
-              {t.send}
+              {sending ? '...' : t.send}
             </button>
+
+            {error && (
+              <p style={{
+                textAlign:   'center',
+                marginTop:   '1.5rem',
+                fontFamily:  'var(--font-montserrat), sans-serif',
+                fontWeight:  300,
+                fontSize:    '12px',
+                color:       'rgba(249,249,249,0.5)',
+                letterSpacing: '0.02em',
+              }}>
+                Une erreur est survenue.
+              </p>
+            )}
           </form>
         )}
 
         {/* Footer */}
-        <footer style={{ marginTop: '5rem', textAlign: 'center' }}>
+        <footer className="contact-footer" style={{ marginTop: '5rem', textAlign: 'center' }}>
           <Image
             src="/logo-white.png"
             alt="ALPSEREN — Private Estate & Lifestyle"
             width={120}
             height={75}
+            className="footer-logo-img"
             style={{ width: '120px', height: 'auto', margin: '0 auto', opacity: 0.55 }}
           />
           <p
+            className="footer-text-sm"
             style={{
               fontFamily:    'var(--font-montserrat), sans-serif',
               fontWeight:    300,
@@ -176,6 +213,7 @@ export default function ContactSection({ lang }: Props) {
             © 2025 ALPSEREN. Tous droits réservés.
           </p>
           <p
+            className="footer-text-sm"
             style={{
               fontFamily:    'var(--font-montserrat), sans-serif',
               fontWeight:    300,

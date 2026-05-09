@@ -30,14 +30,19 @@ export default function VideoPhone({ lang }: Props) {
     canvas.width  = 316
     canvas.height = 644
 
+    const isMobile = window.innerWidth <= 767
+
     const frames: HTMLImageElement[] = new Array(FRAME_COUNT)
     let loadedCount  = 0
     let currentFrame = 0
 
-    const lenis = new Lenis()
-    lenis.on('scroll', ScrollTrigger.update)
-    gsap.ticker.add((time) => lenis.raf(time * 1000))
-    gsap.ticker.lagSmoothing(0)
+    let lenisInstance: InstanceType<typeof Lenis> | null = null
+    if (!isMobile) {
+      lenisInstance = new Lenis()
+      lenisInstance.on('scroll', ScrollTrigger.update)
+      gsap.ticker.add((time) => lenisInstance!.raf(time * 1000))
+      gsap.ticker.lagSmoothing(0)
+    }
 
     function drawFrame(i: number) {
       const img = frames[i]
@@ -86,28 +91,30 @@ export default function VideoPhone({ lang }: Props) {
         },
       }))
 
-      // Téléphone : apparaît 18–22%
-      reg(gsap.fromTo(phoneFrameRef.current,
-        { opacity: 0, scale: 0.97 },
-        { opacity: 1, scale: 1, ease: 'none',
-          scrollTrigger: { trigger: c, start: '18% top', end: '22% top', scrub: 1 } }
-      ))
+      if (!isMobile) {
+        // Téléphone : apparaît 18–22%
+        reg(gsap.fromTo(phoneFrameRef.current,
+          { opacity: 0, scale: 0.97 },
+          { opacity: 1, scale: 1, ease: 'none',
+            scrollTrigger: { trigger: c, start: '18% top', end: '22% top', scrub: 1 } }
+        ))
 
-      // 01 Estate brief — gauche — 20–35%
-      slideIn (leftBriefRef.current,  -28, '20% top', '24% top')
-      slideOut(leftBriefRef.current,  -28, '32% top', '35% top')
+        // 01 Estate brief — gauche — 20–35%
+        slideIn (leftBriefRef.current,  -28, '20% top', '24% top')
+        slideOut(leftBriefRef.current,  -28, '32% top', '35% top')
 
-      // 02 Lifestyle brief — droite — 35–50%
-      slideIn (rightBriefRef.current,  28, '35% top', '39% top')
-      slideOut(rightBriefRef.current,  28, '47% top', '50% top')
+        // 02 Lifestyle brief — droite — 35–50%
+        slideIn (rightBriefRef.current,  28, '35% top', '39% top')
+        slideOut(rightBriefRef.current,  28, '47% top', '50% top')
 
-      // 03 Estate détaillé — gauche — 50–65%
-      slideIn (leftDetailRef.current,  -28, '50% top', '54% top')
-      slideOut(leftDetailRef.current,  -28, '62% top', '65% top')
+        // 03 Estate détaillé — gauche — 50–65%
+        slideIn (leftDetailRef.current,  -28, '50% top', '54% top')
+        slideOut(leftDetailRef.current,  -28, '62% top', '65% top')
 
-      // 04 Lifestyle détaillé — droite — 65–80%
-      slideIn (rightDetailRef.current,  28, '65% top', '69% top')
-      slideOut(rightDetailRef.current,  28, '77% top', '80% top')
+        // 04 Lifestyle détaillé — droite — 65–80%
+        slideIn (rightDetailRef.current,  28, '65% top', '69% top')
+        slideOut(rightDetailRef.current,  28, '77% top', '80% top')
+      }
 
       // VideoPhone s'efface 80–90% — révèle ContactSection
       reg(gsap.fromTo(wrapperRef.current,
@@ -133,7 +140,7 @@ export default function VideoPhone({ lang }: Props) {
     for (let i = 0; i < 10; i++) loadOne(i)
     setTimeout(() => { for (let i = 10; i < FRAME_COUNT; i++) loadOne(i) }, 150)
 
-    return () => { lenis.destroy(); triggers.forEach(t => t.kill()) }
+    return () => { lenisInstance?.destroy(); triggers.forEach(t => t.kill()) }
   }, [])
 
   const t  = translations[lang]
@@ -239,7 +246,7 @@ export default function VideoPhone({ lang }: Props) {
           boxShadow: 'inset 1px 0 0 rgba(255,255,255,0.06), inset -1px 0 0 rgba(0,0,0,0.5)',
         }}
       >
-        <div style={{
+        <div className="phone-notch" style={{
           position: 'absolute', top: 0, left: '50%',
           transform: 'translateX(-50%)', zIndex: 10,
           width: '96px', height: '28px',

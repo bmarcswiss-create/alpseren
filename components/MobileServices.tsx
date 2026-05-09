@@ -67,35 +67,35 @@ export default function MobileServices({ lang }: Props) {
       style={{ backgroundColor: '#1a1814' }}
     >
       {/* Bloc 1 — 01 / Estate Management */}
-      <div style={{ ...blockCenter, padding: '4rem 2rem' }}>
-        <p style={labelStyle}>{t.estate.label}</p>
-        <h2 style={titleStyle}>
+      <div style={{ ...blockCenter, padding: '4rem 1.5rem' }}>
+        <p className="mobile-section-label" style={labelStyle}>{t.estate.label}</p>
+        <h2 className="mobile-section-title" style={titleStyle}>
           {t.estate.heading[0]}<br />{t.estate.heading[1]}
         </h2>
         <div style={rulerStyle} />
-        <p style={bodyStyle}>{t.estate.body}</p>
+        <p className="mobile-section-body" style={bodyStyle}>{t.estate.body}</p>
       </div>
 
       {separator}
 
       {/* Bloc 2 — 02 / Lifestyle Services */}
-      <div style={{ ...blockCenter, padding: '4rem 2rem' }}>
-        <p style={labelStyle}>{t.lifestyle.label}</p>
-        <h2 style={titleStyle}>
+      <div style={{ ...blockCenter, padding: '4rem 1.5rem' }}>
+        <p className="mobile-section-label" style={labelStyle}>{t.lifestyle.label}</p>
+        <h2 className="mobile-section-title" style={titleStyle}>
           {t.lifestyle.heading[0]}<br />{t.lifestyle.heading[1]}
         </h2>
         <div style={rulerStyle} />
-        <p style={bodyStyle}>{t.lifestyle.body}</p>
+        <p className="mobile-section-body" style={bodyStyle}>{t.lifestyle.body}</p>
       </div>
 
       {separator}
 
       {/* Bloc 3 — 03 / Estate Management détaillé */}
-      <div style={{ ...blockCenter, padding: '3rem 2rem' }}>
-        <p style={labelStyle}>03 / Estate Management</p>
+      <div style={{ ...blockCenter, padding: '3rem 1.5rem' }}>
+        <p className="mobile-section-label" style={labelStyle}>03 / Estate Management</p>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.estate.items.map((item, i) => (
-            <li key={i} style={listItemStyle}>
+            <li key={i} className="mobile-section-body" style={listItemStyle}>
               <span style={{ color: 'rgba(194,155,109,0.5)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
               {item}
             </li>
@@ -106,11 +106,11 @@ export default function MobileServices({ lang }: Props) {
       {separator}
 
       {/* Bloc 4 — 04 / Lifestyle Services détaillé */}
-      <div style={{ ...blockCenter, padding: '3rem 2rem' }}>
-        <p style={labelStyle}>04 / Lifestyle Services</p>
+      <div style={{ ...blockCenter, padding: '3rem 1.5rem' }}>
+        <p className="mobile-section-label" style={labelStyle}>04 / Lifestyle Services</p>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.lifestyle.items.map((item, i) => (
-            <li key={i} style={listItemStyle}>
+            <li key={i} className="mobile-section-body" style={listItemStyle}>
               <span style={{ color: 'rgba(194,155,109,0.5)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
               {item}
             </li>

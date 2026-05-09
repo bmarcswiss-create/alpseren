@@ -84,16 +84,73 @@ body {
   }
 }
 
-/* ── Responsive mobile VideoPhone ──────────────────────────── */
+/* ── Responsive mobile ──────────────────────────────────────── */
 @media (max-width: 767px) {
-  .phone-frame-container {
-    width:  75vw !important;
-    height: calc(75vw * 2.03125) !important; /* ratio 320/650 */
-  }
 
-  /* Panneaux gauche/droite : masqués sur mobile — remplacés par MobileServices */
+  /* 1. Phone mockup → canvas fullscreen */
+  .phone-frame-container {
+    width:            100% !important;
+    height:           100% !important;
+    border-radius:    0 !important;
+    background-color: transparent !important;
+    border:           none !important;
+    box-shadow:       none !important;
+    opacity:          1 !important;
+  }
+  .phone-notch {
+    display: none !important;
+  }
   .phone-panel {
     display: none !important;
+  }
+
+  /* 3. Typographie fluide — sections 01-04 */
+  .mobile-section-title {
+    font-size: clamp(24px, 6vw, 32px) !important;
+  }
+  .mobile-section-body {
+    font-size: clamp(13px, 3.5vw, 15px) !important;
+  }
+  .mobile-section-label {
+    font-size: clamp(9px, 2.5vw, 11px) !important;
+  }
+
+  /* 4. Header */
+  .header-logo-text {
+    font-size: 9px !important;
+  }
+  .header-lang-btn {
+    font-size: 9px !important;
+  }
+
+  /* 5. Philosophie */
+  .philo-text {
+    font-size:   clamp(14px, 4vw, 17px) !important;
+    padding:     0 1.5rem !important;
+    line-height: 1.9 !important;
+  }
+
+  /* 6. Formulaire contact */
+  .contact-card {
+    padding:       4rem 1.5rem !important;
+    max-width:     100% !important;
+    border-radius: 0 !important;
+  }
+
+  /* 7. Scroll container — défilement natif */
+  #scroll-container {
+    touch-action: pan-y;
+  }
+
+  /* 8. Footer */
+  .footer-logo-img {
+    width: 100px !important;
+  }
+  .footer-text-sm {
+    font-size: 8px !important;
+  }
+  .contact-footer {
+    padding-bottom: 3rem !important;
   }
 }
 
