@@ -11,10 +11,26 @@ export default function ContactForm({ lang }: Props) {
   const t = translations[lang].contact
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSent(true)
+    setLoading(true)
+    setError(false)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error()
+      setSent(true)
+    } catch {
+      setError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (sent) {
@@ -71,11 +87,18 @@ export default function ContactForm({ lang }: Props) {
         />
       </div>
 
+      {error && (
+        <p className="font-body font-light text-xs tracking-ultra uppercase text-background/60">
+          {lang === 'fr' ? 'Une erreur est survenue, veuillez réessayer.' : 'An error occurred, please try again.'}
+        </p>
+      )}
+
       <button
         type="submit"
-        className="self-start font-body font-light text-xs tracking-ultra uppercase text-icon border-b border-icon/40 hover:border-icon pb-0.5 transition-colors duration-300"
+        disabled={loading}
+        className="self-start font-body font-light text-xs tracking-ultra uppercase text-icon border-b border-icon/40 hover:border-icon pb-0.5 transition-colors duration-300 disabled:opacity-40"
       >
-        {t.send}
+        {loading ? (lang === 'fr' ? 'Envoi...' : 'Sending...') : t.send}
       </button>
     </form>
   )
