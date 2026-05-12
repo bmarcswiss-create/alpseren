@@ -9,7 +9,7 @@ interface Props {
 
 export default function ContactForm({ lang }: Props) {
   const t = translations[lang].contact
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', timeline: '', message: '' })
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -41,6 +41,9 @@ export default function ContactForm({ lang }: Props) {
     )
   }
 
+  const inputClass = "bg-transparent border-b border-background/20 py-3 font-body font-light text-sm text-background outline-none focus:border-background/60 transition-colors duration-300 w-full"
+  const labelClass = "font-body font-light text-xs tracking-ultra uppercase text-background/40"
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-8">
       <p className="font-body font-light text-xs tracking-ultra uppercase text-background/40 mb-2">
@@ -49,42 +52,85 @@ export default function ContactForm({ lang }: Props) {
       <div className="w-12 h-px bg-icon" />
 
       <div className="flex flex-col gap-2">
-        <label className="font-body font-light text-xs tracking-ultra uppercase text-background/40">
-          {t.name}
-        </label>
+        <label className={labelClass}>{t.name}</label>
         <input
           type="text"
           required
           value={form.name}
           onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-          className="bg-transparent border-b border-background/20 py-3 font-body font-light text-sm text-background outline-none focus:border-background/60 transition-colors duration-300"
+          className={inputClass}
         />
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="font-body font-light text-xs tracking-ultra uppercase text-background/40">
-          {t.email}
-        </label>
+        <label className={labelClass}>{t.email}</label>
         <input
           type="email"
           required
           value={form.email}
           onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-          className="bg-transparent border-b border-background/20 py-3 font-body font-light text-sm text-background outline-none focus:border-background/60 transition-colors duration-300"
+          className={inputClass}
         />
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="font-body font-light text-xs tracking-ultra uppercase text-background/40">
-          {t.message}
-        </label>
+        <label className={labelClass}>{t.phone}</label>
+        <input
+          type="tel"
+          value={form.phone}
+          onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+          className={inputClass}
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label className={labelClass}>{t.service}</label>
+        <select
+          required
+          value={form.service}
+          onChange={e => setForm(f => ({ ...f, service: e.target.value }))}
+          className={inputClass + ' cursor-pointer appearance-none'}
+        >
+          <option value="" disabled>—</option>
+          <option value="Lifestyle Services">Lifestyle Services</option>
+          <option value="Estate Management">Estate Management</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label className={labelClass}>{t.timeline}</label>
+        <input
+          type="text"
+          value={form.timeline}
+          onChange={e => setForm(f => ({ ...f, timeline: e.target.value }))}
+          className={inputClass}
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label className={labelClass}>{t.message}</label>
         <textarea
           required
           rows={3}
           value={form.message}
           onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-          className="bg-transparent border-b border-background/20 py-3 font-body font-light text-sm text-background outline-none focus:border-background/60 transition-colors duration-300 resize-none"
+          className={inputClass + ' resize-none'}
         />
+      </div>
+
+      <div className="flex items-start gap-3">
+        <input
+          type="checkbox"
+          id="acceptance"
+          required
+          className="mt-0.5 accent-icon cursor-pointer"
+        />
+        <label htmlFor="acceptance" className="font-body font-light text-xs text-background/40 leading-relaxed cursor-pointer">
+          {t.acceptancePrefix}{' '}
+          <a href="/confidentialite" className="border-b border-background/30 hover:border-background/60 transition-colors duration-300">
+            {t.acceptanceLink}
+          </a>
+        </label>
       </div>
 
       {error && (

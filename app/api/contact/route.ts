@@ -8,7 +8,7 @@ function esc(s: string) {
 }
 
 export async function POST(request: Request) {
-  const { name, email, message } = await request.json()
+  const { name, email, phone, service, timeline, message } = await request.json()
 
   try {
     await resend.emails.send({
@@ -18,6 +18,9 @@ export async function POST(request: Request) {
       html: `
         <p><strong>Nom :</strong> ${esc(name)}</p>
         <p><strong>Email :</strong> ${esc(email)}</p>
+        ${phone    ? `<p><strong>Téléphone :</strong> ${esc(phone)}</p>` : ''}
+        ${service  ? `<p><strong>Service :</strong> ${esc(service)}</p>` : ''}
+        ${timeline ? `<p><strong>Délai :</strong> ${esc(timeline)}</p>` : ''}
         <p><strong>Message :</strong><br>${esc(message).replace(/\n/g, '<br>')}</p>
       `,
     })

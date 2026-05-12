@@ -10,7 +10,7 @@ interface Props {
 
 export default function ContactSection({ lang }: Props) {
   const t = translations[lang].contact
-  const [form, setForm]       = useState({ name: '', email: '', message: '' })
+  const [form, setForm]       = useState({ name: '', email: '', phone: '', service: '', timeline: '', message: '' })
   const [sent, setSent]       = useState(false)
   const [sending, setSending] = useState(false)
   const [error, setError]     = useState(false)
@@ -30,6 +30,17 @@ export default function ContactSection({ lang }: Props) {
     outline:        'none',
     display:        'block',
   }
+
+  const selectStyle: React.CSSProperties = {
+    ...inputStyle,
+    cursor:     'pointer',
+    appearance: 'none',
+  }
+
+  const focusOn  = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.85)')
+  const focusOff = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.5)')
 
   return (
     <section
@@ -55,7 +66,6 @@ export default function ContactSection({ lang }: Props) {
           borderRadius:   '2px',
         }}
       >
-        {/* Label */}
         <p
           style={{
             textAlign:     'center',
@@ -71,7 +81,6 @@ export default function ContactSection({ lang }: Props) {
           05 / CONTACT
         </p>
 
-        {/* Séparateur */}
         <div
           style={{
             width:           '32px',
@@ -93,7 +102,7 @@ export default function ContactSection({ lang }: Props) {
               padding:       '3rem 0',
             }}
           >
-            Votre message a été envoyé.
+            {t.sent}
           </p>
         ) : (
           <form onSubmit={async e => {
@@ -122,8 +131,8 @@ export default function ContactSection({ lang }: Props) {
               onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
               className="contact-input"
               style={inputStyle}
-              onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.85)')}
-              onBlur={e  => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.5)')}
+              onFocus={focusOn}
+              onBlur={focusOff}
             />
             <input
               type="email"
@@ -133,8 +142,41 @@ export default function ContactSection({ lang }: Props) {
               onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
               className="contact-input"
               style={inputStyle}
-              onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.85)')}
-              onBlur={e  => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.5)')}
+              onFocus={focusOn}
+              onBlur={focusOff}
+            />
+            <input
+              type="tel"
+              placeholder={t.phone}
+              value={form.phone}
+              onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
+              className="contact-input"
+              style={inputStyle}
+              onFocus={focusOn}
+              onBlur={focusOff}
+            />
+            <select
+              required
+              value={form.service}
+              onChange={e => setForm(f => ({ ...f, service: e.target.value }))}
+              className="contact-input"
+              style={selectStyle}
+              onFocus={focusOn}
+              onBlur={focusOff}
+            >
+              <option value="" disabled style={{ background: '#2D2926' }}>{t.service}</option>
+              <option value="Lifestyle Services" style={{ background: '#2D2926' }}>Lifestyle Services</option>
+              <option value="Estate Management" style={{ background: '#2D2926' }}>Estate Management</option>
+            </select>
+            <input
+              type="text"
+              placeholder={t.timeline}
+              value={form.timeline}
+              onChange={e => setForm(f => ({ ...f, timeline: e.target.value }))}
+              className="contact-input"
+              style={inputStyle}
+              onFocus={focusOn}
+              onBlur={focusOff}
             />
             <textarea
               required
@@ -144,19 +186,48 @@ export default function ContactSection({ lang }: Props) {
               onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
               className="contact-input"
               style={{ ...inputStyle, resize: 'none' }}
-              onFocus={e => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.85)')}
-              onBlur={e  => (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.5)')}
+              onFocus={focusOn}
+              onBlur={focusOff}
             />
+
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '2.5rem' }}>
+              <input
+                type="checkbox"
+                id="acceptance"
+                required
+                style={{ marginTop: '2px', accentColor: '#C29B6D', cursor: 'pointer', flexShrink: 0 }}
+              />
+              <label
+                htmlFor="acceptance"
+                style={{
+                  fontFamily:    'var(--font-montserrat), sans-serif',
+                  fontWeight:    300,
+                  fontSize:      '11px',
+                  letterSpacing: '0.04em',
+                  color:         'rgba(249,249,249,0.45)',
+                  lineHeight:    1.7,
+                  cursor:        'pointer',
+                }}
+              >
+                {t.acceptancePrefix}{' '}
+                <a
+                  href="/confidentialite"
+                  style={{ color: 'rgba(194,155,109,0.7)', borderBottom: '1px solid rgba(194,155,109,0.3)' }}
+                >
+                  {t.acceptanceLink}
+                </a>
+              </label>
+            </div>
 
             <button
               type="submit"
               disabled={sending}
               style={{
                 display:        'block',
-                margin:         '3rem auto 0',
+                margin:         '0 auto',
                 background:     'none',
                 border:         'none',
-                borderBottom:   '1px solid rgba(194,155,109,0.9)',
+                borderBottom:   '1px solid rgba(194,155,109,0.4)',
                 paddingBottom:  '2px',
                 color:          '#F9F9F9',
                 fontFamily:     'var(--font-montserrat), sans-serif',
@@ -175,21 +246,20 @@ export default function ContactSection({ lang }: Props) {
 
             {error && (
               <p style={{
-                textAlign:   'center',
-                marginTop:   '1.5rem',
-                fontFamily:  'var(--font-montserrat), sans-serif',
-                fontWeight:  300,
-                fontSize:    '12px',
-                color:       'rgba(249,249,249,0.5)',
+                textAlign:     'center',
+                marginTop:     '1.5rem',
+                fontFamily:    'var(--font-montserrat), sans-serif',
+                fontWeight:    300,
+                fontSize:      '12px',
+                color:         'rgba(249,249,249,0.5)',
                 letterSpacing: '0.02em',
               }}>
-                Une erreur est survenue.
+                {lang === 'fr' ? 'Une erreur est survenue.' : 'An error occurred.'}
               </p>
             )}
           </form>
         )}
 
-        {/* Footer */}
         <footer className="contact-footer" style={{ marginTop: '5rem', textAlign: 'center' }}>
           <LogoComplet
             variant="light"
