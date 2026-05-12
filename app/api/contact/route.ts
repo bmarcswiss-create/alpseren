@@ -22,7 +22,8 @@ export async function POST(request: Request) {
       `,
     })
     return NextResponse.json({ success: true })
-  } catch {
-    return NextResponse.json({ error: 'Erreur envoi' }, { status: 500 })
+  } catch (err) {
+    console.error('[contact] Resend error:', err)
+    return NextResponse.json({ error: 'Erreur envoi', detail: String(err) }, { status: 500 })
   }
 }
