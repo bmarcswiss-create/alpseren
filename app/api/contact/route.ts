@@ -12,7 +12,7 @@ export async function POST(request: Request) {
 
   try {
     await resend.emails.send({
-      from: 'ALPSEREN <contact@alpseren.ch>',
+      from: 'ALPSEREN <onboarding@resend.dev>',
       to: 'contact@alpseren.ch',
       subject: `Nouveau message de ${name}`,
       html: `
