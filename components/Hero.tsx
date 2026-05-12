@@ -54,14 +54,14 @@ export default function Hero({ }: Props) {
         {/* Desktop : logo complet avec baseline */}
         <LogoComplet
           variant="light"
-          className="hidden sm:block w-[420px]"
-          style={{ maxWidth: '60vw' }}
+          className="hidden sm:block w-[300px]"
+          style={{ maxWidth: '50vw' }}
         />
         {/* Mobile : logo + nom sans baseline */}
         <LogoNom
           variant="light"
-          className="block sm:hidden w-[260px]"
-          style={{ maxWidth: '72vw' }}
+          className="block sm:hidden w-[200px]"
+          style={{ maxWidth: '65vw' }}
         />
       </div>
     </div>
