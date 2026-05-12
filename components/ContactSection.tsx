@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
+import { LogoComplet } from '@/components/Logo'
 import { translations, type Lang } from '@/lib/translations'
 
 interface Props {
@@ -191,11 +191,8 @@ export default function ContactSection({ lang }: Props) {
 
         {/* Footer */}
         <footer className="contact-footer" style={{ marginTop: '5rem', textAlign: 'center' }}>
-          <Image
-            src="/logo-white.png"
-            alt="ALPSEREN — Private Estate & Lifestyle"
-            width={120}
-            height={75}
+          <LogoComplet
+            variant="light"
             className="footer-logo-img"
             style={{ width: '120px', height: 'auto', margin: '0 auto', opacity: 0.55 }}
           />
@@ -210,7 +207,7 @@ export default function ContactSection({ lang }: Props) {
               marginTop:     '1rem',
             }}
           >
-            © 2025 ALPSEREN. Tous droits réservés.
+            © 2026 ALPSEREN. Tous droits réservés.
           </p>
           <p
             className="footer-text-sm"

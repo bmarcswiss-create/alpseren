@@ -1,32 +1,30 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Image from 'next/image'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { LogoComplet, LogoNom } from '@/components/Logo'
 
 gsap.registerPlugin(ScrollTrigger)
 
 interface Props {
-  lang: unknown // conservé pour compatibilité page.tsx
+  lang: unknown
 }
 
 export default function Hero({ }: Props) {
   const heroRef = useRef<HTMLDivElement>(null)
-  const logoRef = useRef<HTMLImageElement>(null)
+  const logoRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const el = heroRef.current
     if (!el) return
 
-    // Entrée — fadeInUp logo
     gsap.fromTo(
       logoRef.current,
       { opacity: 0, y: 16 },
       { opacity: 1, y: 0, duration: 1.2, ease: 'cubic-bezier(0.16, 1, 0.3, 1)', delay: 0.1 }
     )
 
-    // Disparition au scroll (0 → 8 %)
     gsap.to(el, {
       opacity: 0,
       ease: 'none',
@@ -46,20 +44,26 @@ export default function Hero({ }: Props) {
       ref={heroRef}
       className="fixed inset-0 z-10 flex items-center justify-center"
     >
-      {/* Overlay sombre */}
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(45,41,38,0.52)' }} />
 
-      {/* Logo seul — centré */}
-      <Image
+      <div
         ref={logoRef}
-        src="/logo-white.png"
-        alt="ALPSEREN — Private Estate & Lifestyle"
-        width={500}
-        height={300}
-        priority
-        className="relative w-[500px] h-auto"
+        className="relative"
         style={{ opacity: 0 }}
-      />
+      >
+        {/* Desktop : logo complet avec baseline */}
+        <LogoComplet
+          variant="light"
+          className="hidden sm:block w-[420px]"
+          style={{ maxWidth: '60vw' }}
+        />
+        {/* Mobile : logo + nom sans baseline */}
+        <LogoNom
+          variant="light"
+          className="block sm:hidden w-[260px]"
+          style={{ maxWidth: '72vw' }}
+        />
+      </div>
     </div>
   )
 }

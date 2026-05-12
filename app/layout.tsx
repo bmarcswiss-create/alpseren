@@ -11,17 +11,45 @@ const cinzel = Cinzel({
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["300", "400"],
+  weight: ["300", "400", "500"],
 });
 
 export const metadata: Metadata = {
   title: "ALPSEREN — Private Estate & Lifestyle",
   description:
     "Estate Management & Lifestyle Services — Conciergerie de luxe et gestion immobilière de prestige dans les Alpes.",
+  metadataBase: new URL("https://alpseren.ch"),
   openGraph: {
     title: "ALPSEREN — Private Estate & Lifestyle",
     description: "Alpine Excellence. Discreet. Precise. Absolute.",
-    url: "https://alpseren.com",
+    url: "https://alpseren.ch",
+    siteName: "ALPSEREN",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "ALPSEREN — Private Estate & Lifestyle",
+      },
+    ],
+    locale: "fr_CH",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ALPSEREN — Private Estate & Lifestyle",
+    description: "Alpine Excellence. Discreet. Precise. Absolute.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/logo-symbole.svg", type: "image/svg+xml" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
