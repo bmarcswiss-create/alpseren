@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   try {
     await resend.emails.send({
       from: 'ALPSEREN <contact@alpseren.ch>',
-      to: 'contact@alpseren.ch',
+      to: 'bmarcswiss@gmail.com',
       subject: `Nouveau message de ${name}`,
       html: `
         <p><strong>Nom :</strong> ${esc(name)}</p>
