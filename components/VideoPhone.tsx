@@ -30,7 +30,7 @@ export default function VideoPhone({ lang }: Props) {
     canvas.width  = 316
     canvas.height = 644
 
-    const isMobile = window.innerWidth <= 767
+    const isMobile = window.innerWidth <= 1023
 
     const frames: HTMLImageElement[] = new Array(FRAME_COUNT)
     let loadedCount  = 0
@@ -153,6 +153,7 @@ export default function VideoPhone({ lang }: Props) {
   const titleStyle: React.CSSProperties = {
     color: '#F9F9F9', textTransform: 'uppercase',
     fontSize: '32px', lineHeight: 1.2,
+    fontFamily: 'var(--font-cinzel), serif',
   }
   const bodyStyle: React.CSSProperties = {
     fontSize: '14px', color: 'rgba(249,249,249,0.6)', lineHeight: 1.9,

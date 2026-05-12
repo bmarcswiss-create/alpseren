@@ -51,17 +51,17 @@ export default function Hero({ }: Props) {
         className="relative"
         style={{ opacity: 0 }}
       >
-        {/* Desktop : logo complet avec baseline */}
+        {/* Desktop lg+ : logo complet avec baseline */}
         <LogoComplet
           variant="light"
-          className="hidden sm:block w-[300px]"
-          style={{ maxWidth: '50vw' }}
+          className="hidden lg:block"
+          style={{ width: '300px', maxWidth: '40vw' }}
         />
-        {/* Mobile : logo + nom sans baseline */}
+        {/* Mobile / tablette < lg : logo + nom sans baseline */}
         <LogoNom
           variant="light"
-          className="block sm:hidden w-[200px]"
-          style={{ maxWidth: '65vw' }}
+          className="block lg:hidden"
+          style={{ width: 'clamp(160px, 60vw, 260px)' }}
         />
       </div>
     </div>

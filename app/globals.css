@@ -77,17 +77,17 @@ body {
   background: rgba(45, 41, 38, 0.82);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .section-card {
     padding: 0;
     background: transparent;
   }
 }
 
-/* ── Responsive mobile ──────────────────────────────────────── */
-@media (max-width: 767px) {
+/* ── Tablette + mobile (≤ 1023px) — phone frame & panels ───── */
+@media (max-width: 1023px) {
 
-  /* 1. Phone mockup → canvas fullscreen */
+  /* Phone mockup → canvas fullscreen */
   .phone-frame-container {
     width:            100% !important;
     height:           100% !important;
@@ -104,7 +104,16 @@ body {
     display: none !important;
   }
 
-  /* 3. Typographie fluide — sections 01-04 */
+  /* Scroll container — défilement natif */
+  #scroll-container {
+    touch-action: pan-y;
+  }
+}
+
+/* ── Mobile uniquement (≤ 767px) — typographie & mise en page ── */
+@media (max-width: 767px) {
+
+  /* Typographie fluide — sections 01-04 */
   .mobile-section-title {
     font-size: clamp(24px, 6vw, 32px) !important;
   }
@@ -115,7 +124,7 @@ body {
     font-size: clamp(9px, 2.5vw, 11px) !important;
   }
 
-  /* 4. Header */
+  /* Header */
   .header-logo-text {
     font-size: 9px !important;
   }
@@ -123,26 +132,21 @@ body {
     font-size: 9px !important;
   }
 
-  /* 5. Philosophie */
+  /* Philosophie */
   .philo-text {
     font-size:   clamp(14px, 4vw, 17px) !important;
     padding:     0 1.5rem !important;
     line-height: 1.9 !important;
   }
 
-  /* 6. Formulaire contact */
+  /* Formulaire contact */
   .contact-card {
     padding:       4rem 1.5rem !important;
     max-width:     100% !important;
     border-radius: 0 !important;
   }
 
-  /* 7. Scroll container — défilement natif */
-  #scroll-container {
-    touch-action: pan-y;
-  }
-
-  /* 8. Footer */
+  /* Footer */
   .footer-logo-img {
     width: 100px !important;
   }
