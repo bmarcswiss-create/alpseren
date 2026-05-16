@@ -10,10 +10,11 @@ interface Props {
 
 export default function ContactSection({ lang }: Props) {
   const t = translations[lang].contact
-  const [form, setForm]       = useState({ name: '', email: '', phone: '', service: '', timeline: '', message: '' })
+  const [form, setForm]       = useState({ name: '', email: '', phone: '', service: '', timeline: '', message: '', captcha: '' })
   const [sent, setSent]       = useState(false)
   const [sending, setSending] = useState(false)
   const [error, setError]     = useState(false)
+  const [captchaError, setCaptchaError] = useState(false)
 
   const inputStyle: React.CSSProperties = {
     width:          '100%',
@@ -61,9 +62,11 @@ export default function ContactSection({ lang }: Props) {
           width:          '100%',
           margin:         '0 auto',
           padding:        '3rem 2.5rem',
-          background:     'rgba(13,13,11,0.55)',
-          backdropFilter: 'blur(8px)',
+          background:     'rgba(13,13,11,0.92)',
+          backdropFilter: 'blur(10px)',
           borderRadius:   '2px',
+          border:         '1px solid rgba(255,255,255,0.06)',
+          boxShadow:      '0 0 40px rgba(0,0,0,0.25)',
         }}
       >
         <p
@@ -109,6 +112,11 @@ export default function ContactSection({ lang }: Props) {
             e.preventDefault()
             setSending(true)
             setError(false)
+            if (form.captcha.trim() !== '7') {
+              setCaptchaError(true)
+              setSending(false)
+              return
+            }
             try {
               const res = await fetch('/api/contact', {
                 method:  'POST',
@@ -189,7 +197,25 @@ export default function ContactSection({ lang }: Props) {
               onFocus={focusOn}
               onBlur={focusOff}
             />
-
+            <input
+              type="text"
+              required
+              placeholder={t.captcha}
+              value={form.captcha}
+              onChange={e => {
+                setCaptchaError(false)
+                setForm(f => ({ ...f, captcha: e.target.value }))
+              }}
+              className="contact-input"
+              style={inputStyle}
+              onFocus={focusOn}
+              onBlur={focusOff}
+            />
+            {captchaError && (
+              <p style={{ color: '#C29B6D', fontFamily: 'var(--font-montserrat), sans-serif', fontSize: '12px', marginTop: '-1rem', marginBottom: '1rem' }}>
+                {lang === 'fr' ? 'Réponse invalide. Merci de vérifier le captcha.' : 'Invalid answer. Please check the captcha.'}
+              </p>
+            )}
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '2.5rem' }}>
               <input
                 type="checkbox"

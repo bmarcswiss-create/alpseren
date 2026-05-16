@@ -8,7 +8,11 @@ function esc(s: string) {
 }
 
 export async function POST(request: Request) {
-  const { name, email, phone, service, timeline, message } = await request.json()
+  const { name, email, phone, service, timeline, message, captcha } = await request.json()
+
+  if (captcha !== '7') {
+    return NextResponse.json({ error: 'Invalid captcha' }, { status: 400 })
+  }
 
   try {
     await resend.emails.send({
