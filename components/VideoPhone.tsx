@@ -82,11 +82,12 @@ export default function VideoPhone({ lang }: Props) {
       const c = document.getElementById('scroll-container')
       if (!c) return
 
-      // Frame scrub
+      // Frame scrub — arrête à 70% du scroll pour éviter les derniers frames flous
       triggers.push(ScrollTrigger.create({
         trigger: c, start: 'top top', end: 'bottom bottom', scrub: true,
         onUpdate(self) {
-          const idx = Math.min(Math.floor(self.progress * FRAME_COUNT), FRAME_COUNT - 1)
+          const capped = Math.min(self.progress, 0.70)
+          const idx = Math.min(Math.floor(capped * FRAME_COUNT), FRAME_COUNT - 1)
           if (idx !== currentFrame) { currentFrame = idx; drawFrame(idx) }
         },
       }))
