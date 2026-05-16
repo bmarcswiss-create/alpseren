@@ -82,7 +82,7 @@ export default function VideoPhone({ lang }: Props) {
       const c = document.getElementById('scroll-container')
       if (!c) return
 
-      // Frame scrub — séquence complète 0→241
+      // Frame scrub
       triggers.push(ScrollTrigger.create({
         trigger: c, start: 'top top', end: 'bottom bottom', scrub: true,
         onUpdate(self) {
@@ -116,11 +116,11 @@ export default function VideoPhone({ lang }: Props) {
         slideOut(rightDetailRef.current,  28, '77% top', '80% top')
       }
 
-      // VideoPhone s'efface 72–78% — révèle ContactSection plus proprement
+      // VideoPhone s'efface 80–90% — révèle ContactSection
       reg(gsap.fromTo(wrapperRef.current,
         { opacity: 1 },
         { opacity: 0, ease: 'none',
-          scrollTrigger: { trigger: c, start: '72% top', end: '78% top', scrub: 1 } }
+          scrollTrigger: { trigger: c, start: '80% top', end: '90% top', scrub: 1 } }
       ))
     }
 
