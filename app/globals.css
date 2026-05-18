@@ -94,18 +94,6 @@ body {
 .delay-400 { animation-delay: 0.4s; opacity: 0; }
 .delay-600 { animation-delay: 0.6s; opacity: 0; }
 
-/* Mobile text background for scroll sections */
-.section-card {
-  padding: 1.5rem;
-  background: rgba(45, 41, 38, 0.82);
-}
-
-@media (min-width: 1024px) {
-  .section-card {
-    padding: 0;
-    background: transparent;
-  }
-}
 
 /* ── Tablette + mobile (≤ 1023px) — phone frame & panels ───── */
 @media (max-width: 1023px) {
