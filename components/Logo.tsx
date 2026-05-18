@@ -28,8 +28,8 @@ const CS_C = "M3193.74,1973.3h-62l-93.45-178.69c10.67-18.9,26.85-35.2,31.5-57.3l
 
 // ─── Logo complet : symbole + ALPSEREN + baseline ────────────────────────────
 export function LogoComplet({ variant = 'dark', className, ...rest }: LogoProps) {
-  const nameColor     = variant === 'light' ? '#fefefe' : '#443f3e'
-  const baselineColor = variant === 'light' ? 'rgba(254,254,254,0.68)' : '#6e6664'
+  const nameColor     = variant === 'light' ? '#e8e1d2' : '#443f3e'
+  const baselineColor = variant === 'light' ? 'rgba(232,225,210,.72)' : '#6e6664'
 
   return (
     <svg
@@ -88,7 +88,7 @@ export function LogoComplet({ variant = 'dark', className, ...rest }: LogoProps)
 
 // ─── Logo + Nom : symbole + ALPSEREN (sans baseline) ─────────────────────────
 export function LogoNom({ variant = 'dark', className, ...rest }: LogoProps) {
-  const nameColor = variant === 'light' ? '#fefefe' : '#443f3e'
+  const nameColor = variant === 'light' ? '#e8e1d2' : '#443f3e'
 
   return (
     <svg

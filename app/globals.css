@@ -18,6 +18,26 @@
   /* Letter spacing */
   --tracking-ultra: 0.3em;
   --tracking-luxury: 0.15em;
+  --tracking-logo:  0.34em;
+  --tracking-label: 0.20em;
+}
+
+/* ── Tokens charte ALPSEREN v2 ──────────────────────────────────── */
+:root {
+  --night:        #14110e;
+  --night-elev:   #1d1916;
+  --beige:        #c29c6d;
+  --beige-soft:   rgba(194,156,109,.10);
+  --beige-edge:   rgba(194,156,109,.32);
+  --cream:        #e8e1d2;
+  --cream-72:     rgba(232,225,210,.72);
+  --cream-50:     rgba(232,225,210,.50);
+  --cream-38:     rgba(232,225,210,.38);
+  --cream-08:     rgba(232,225,210,.08);
+  --rule:         rgba(232,225,210,.06);
+  --rule-edge:    rgba(232,225,210,.12);
+  --track-logo:   0.34em;
+  --track-label:  0.20em;
 }
 
 /* Reset */
@@ -41,7 +61,7 @@ html {
 
 body {
   background-color: #1a1814;
-  color: #F9F9F9;
+  color: #e8e1d2;
   font-family: var(--font-body);
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
@@ -160,7 +180,7 @@ body {
 
 /* Placeholders formulaire contact */
 .contact-input::placeholder {
-  color: rgba(249, 249, 249, 0.7);
+  color: var(--cream-72);
 }
 
 /* Marquee */

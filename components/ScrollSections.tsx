@@ -43,7 +43,7 @@ export default function ScrollSections({ lang }: Props) {
         fontWeight:  300,
         fontSize:    '17px',
         lineHeight:  2.0,
-        color:       '#F9F9F9',
+        color:       '#e8e1d2',
         textAlign:   'center',
         textShadow:  '0 1px 20px rgba(0,0,0,0.8)',
       }}>

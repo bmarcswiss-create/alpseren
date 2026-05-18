@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://alpseren.ch"),
   openGraph: {
     title: "ALPSEREN — Private Estate & Lifestyle",
-    description: "Alpine Excellence. Discreet. Precise. Absolute.",
+    description: "Discreet. Precise. Absolute.",
     url: "https://alpseren.ch",
     siteName: "ALPSEREN",
     images: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ALPSEREN — Private Estate & Lifestyle",
-    description: "Alpine Excellence. Discreet. Precise. Absolute.",
+    description: "Discreet. Precise. Absolute.",
     images: ["/og-image.png"],
   },
   icons: {

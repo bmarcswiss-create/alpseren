@@ -20,9 +20,9 @@ export default function ContactSection({ lang }: Props) {
     width:          '100%',
     background:     'transparent',
     border:         'none',
-    borderBottom:   '1px solid rgba(249,249,249,0.5)',
+    borderBottom:   '1px solid var(--cream-50)',
     padding:        '1rem 0',
-    color:          '#F9F9F9',
+    color:          '#e8e1d2',
     fontFamily:     'var(--font-montserrat), sans-serif',
     fontWeight:     300,
     fontSize:       '13px',
@@ -39,9 +39,9 @@ export default function ContactSection({ lang }: Props) {
   }
 
   const focusOn  = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.85)')
+    (e.currentTarget.style.borderBottomColor = 'var(--beige-edge)')
   const focusOff = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    (e.currentTarget.style.borderBottomColor = 'rgba(249,249,249,0.5)')
+    (e.currentTarget.style.borderBottomColor = 'var(--cream-50)')
 
   return (
     <section
@@ -230,7 +230,7 @@ export default function ContactSection({ lang }: Props) {
                   fontWeight:    300,
                   fontSize:      '11px',
                   letterSpacing: '0.04em',
-                  color:         'rgba(249,249,249,0.45)',
+                  color:         'var(--cream-50)',
                   lineHeight:    1.7,
                   cursor:        'pointer',
                 }}
@@ -255,7 +255,7 @@ export default function ContactSection({ lang }: Props) {
                 border:         'none',
                 borderBottom:   '1px solid rgba(194,155,109,0.4)',
                 paddingBottom:  '2px',
-                color:          '#F9F9F9',
+                color:          '#e8e1d2',
                 fontFamily:     'var(--font-montserrat), sans-serif',
                 fontWeight:     300,
                 fontSize:       '11px',
@@ -277,7 +277,7 @@ export default function ContactSection({ lang }: Props) {
                 fontFamily:    'var(--font-montserrat), sans-serif',
                 fontWeight:    300,
                 fontSize:      '12px',
-                color:         'rgba(249,249,249,0.5)',
+                color:         'var(--cream-50)',
                 letterSpacing: '0.02em',
               }}>
                 {lang === 'fr' ? 'Une erreur est survenue.' : 'An error occurred.'}
@@ -298,7 +298,7 @@ export default function ContactSection({ lang }: Props) {
               fontFamily:    'var(--font-montserrat), sans-serif',
               fontWeight:    300,
               fontSize:      '9px',
-              color:         'rgba(249,249,249,0.25)',
+              color:         'var(--cream-38)',
               letterSpacing: '0.04em',
               marginTop:     '1rem',
             }}
@@ -311,12 +311,25 @@ export default function ContactSection({ lang }: Props) {
               fontFamily:    'var(--font-montserrat), sans-serif',
               fontWeight:    300,
               fontSize:      '9px',
-              color:         'rgba(249,249,249,0.25)',
+              color:         'var(--cream-38)',
               letterSpacing: '0.04em',
               marginTop:     '0.4rem',
             }}
           >
             Genève, Suisse
+          </p>
+          <p
+            style={{
+              fontFamily:    'var(--font-montserrat), sans-serif',
+              fontWeight:    500,
+              fontSize:      '10px',
+              color:         'var(--cream-50)',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              marginTop:     '0.8rem',
+            }}
+          >
+            BENJAMIN · ALPSEREN
           </p>
         </footer>
       </div>

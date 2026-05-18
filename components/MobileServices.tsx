@@ -19,8 +19,7 @@ export default function MobileServices({ lang }: Props) {
   }
 
   const titleStyle: React.CSSProperties = {
-    color: '#F9F9F9',
-    textTransform: 'uppercase',
+    color: '#e8e1d2',
     fontSize: '26px',
     lineHeight: 1.25,
     fontFamily: 'var(--font-cinzel), serif',
@@ -30,13 +29,13 @@ export default function MobileServices({ lang }: Props) {
   const rulerStyle: React.CSSProperties = {
     width: '1.5rem',
     height: '1px',
-    backgroundColor: 'rgba(194,155,109,0.4)',
+    backgroundColor: 'var(--rule)',
     margin: '0.85rem auto',
   }
 
   const bodyStyle: React.CSSProperties = {
     fontSize: '14px',
-    color: 'rgba(249,249,249,0.6)',
+    color: 'var(--cream-50)',
     lineHeight: 1.9,
     fontFamily: 'var(--font-montserrat), sans-serif',
     fontWeight: 300,
@@ -45,7 +44,7 @@ export default function MobileServices({ lang }: Props) {
 
   const listItemStyle: React.CSSProperties = {
     fontSize: '13px',
-    color: 'rgba(249,249,249,0.6)',
+    color: 'var(--cream-50)',
     lineHeight: 1.8,
     fontFamily: 'var(--font-montserrat), sans-serif',
     fontWeight: 300,
@@ -56,10 +55,10 @@ export default function MobileServices({ lang }: Props) {
   }
 
   const separator = (
-    <div style={{ height: '1px', backgroundColor: 'rgba(194,155,109,0.4)', margin: '0 2rem' }} />
+    <div style={{ height: '1px', backgroundColor: 'var(--rule)', margin: '0 2rem' }} />
   )
 
-  const blockCenter: React.CSSProperties = { textAlign: 'center', color: '#F9F9F9' }
+  const blockCenter: React.CSSProperties = { textAlign: 'center', color: '#e8e1d2' }
 
   return (
     <div
