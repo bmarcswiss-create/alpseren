@@ -153,20 +153,22 @@ export default function VideoPhone({ lang }: Props) {
   }
   const titleStyle: React.CSSProperties = {
     color: '#e8e1d2',
-    fontSize: '32px', lineHeight: 1.2,
+    fontSize: '44px', lineHeight: 1.15,
     fontFamily: 'var(--f-editorial)',
     fontWeight: 300,
-    letterSpacing: '-0.005em',
+    letterSpacing: '-0.01em',
   }
   const bodyStyle: React.CSSProperties = {
-    fontSize: '14px', color: 'var(--cream-50)', lineHeight: 1.9,
+    fontSize: '15px', color: 'var(--cream-50)', lineHeight: 1.85,
+    fontFamily: 'var(--f-system)', fontWeight: 400,
   }
   const divStyle: React.CSSProperties = {
     width: '1.5rem', height: '1px',
     backgroundColor: 'var(--rule)', margin: '0.85rem 0',
   }
   const listItemStyle: React.CSSProperties = {
-    fontSize: '13px', color: 'var(--cream-50)', lineHeight: 1.8,
+    fontSize: '14px', color: 'var(--cream-50)', lineHeight: 1.8,
+    fontFamily: 'var(--f-system)', fontWeight: 400,
     display: 'flex', alignItems: 'flex-start', gap: '0.4rem',
   }
 

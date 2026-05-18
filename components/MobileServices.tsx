@@ -20,11 +20,11 @@ export default function MobileServices({ lang }: Props) {
 
   const titleStyle: React.CSSProperties = {
     color: '#e8e1d2',
-    fontSize: '26px',
-    lineHeight: 1.25,
+    fontSize: '40px',
+    lineHeight: 1.15,
     fontFamily: 'var(--f-editorial)',
     fontWeight: 300,
-    letterSpacing: '-0.005em',
+    letterSpacing: '-0.01em',
     marginBottom: '1rem',
   }
 
@@ -36,20 +36,20 @@ export default function MobileServices({ lang }: Props) {
   }
 
   const bodyStyle: React.CSSProperties = {
-    fontSize: '14px',
+    fontSize: '15px',
     color: 'var(--cream-50)',
-    lineHeight: 1.9,
+    lineHeight: 1.85,
     fontFamily: 'var(--f-system)',
-    fontWeight: 300,
+    fontWeight: 400,
     whiteSpace: 'pre-line',
   }
 
   const listItemStyle: React.CSSProperties = {
-    fontSize: '13px',
+    fontSize: '14px',
     color: 'var(--cream-50)',
     lineHeight: 1.8,
     fontFamily: 'var(--f-system)',
-    fontWeight: 300,
+    fontWeight: 400,
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
