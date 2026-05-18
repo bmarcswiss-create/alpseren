@@ -5,7 +5,8 @@
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\bmarc\\\\Desktop\\\\alpseren-v2\" -Directory)",
       "Bash(node -e \"const fs = require\\('fs'\\); const p = 'public/icons/apple-touch-icon.png'; const s = fs.statSync\\(p\\); console.log\\('size:', s.size, 'bytes'\\); const p2 = 'public/apple-touch-icon.png'; const s2 = fs.statSync\\(p2\\); console.log\\('root size:', s2.size, 'bytes'\\);\")",
       "Bash(node -e \"try { require\\('sharp'\\); console.log\\('sharp ok'\\); } catch\\(e\\) { console.log\\('no sharp:', e.message.slice\\(0,50\\)\\); }\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const fs = require\\('fs'\\); fs.copyFileSync\\('public/icons/apple-touch-icon.png', 'public/apple-touch-icon.png'\\); console.log\\('root updated'\\);\")"
     ]
   }
 }
