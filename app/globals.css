@@ -13,7 +13,7 @@
 
   /* Typographies */
   --font-display: var(--font-cinzel), serif;
-  --font-body: var(--font-montserrat), sans-serif;
+  --font-body: var(--font-inter), "Helvetica Neue", sans-serif;
 
   /* Letter spacing */
   --tracking-ultra: 0.3em;
@@ -38,6 +38,9 @@
   --rule-edge:    rgba(232,225,210,.12);
   --track-logo:   0.34em;
   --track-label:  0.20em;
+  --f-display:    var(--font-cinzel), serif;
+  --f-editorial:  var(--font-cormorant), "Garamond", serif;
+  --f-system:     var(--font-inter), "Helvetica Neue", sans-serif;
 }
 
 /* Reset */
@@ -62,7 +65,7 @@ html {
 body {
   background-color: #1a1814;
   color: #e8e1d2;
-  font-family: var(--font-body);
+  font-family: var(--f-system);
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;

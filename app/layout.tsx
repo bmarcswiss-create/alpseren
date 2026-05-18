@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
-import { Cinzel, Montserrat } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400"],
 });
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -61,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${cinzel.variable} ${montserrat.variable}`}
+      className={`${cinzel.variable} ${cormorant.variable} ${inter.variable}`}
     >
       <body className="antialiased">
         {children}

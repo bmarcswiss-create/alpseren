@@ -11,18 +11,20 @@ export default function MobileServices({ lang }: Props) {
   const labelStyle: React.CSSProperties = {
     fontSize: '11px',
     color: 'rgba(194,155,109,0.8)',
-    letterSpacing: '0.3em',
+    letterSpacing: '0.20em',
     textTransform: 'uppercase',
     marginBottom: '0.9rem',
-    fontFamily: 'var(--font-montserrat), sans-serif',
-    fontWeight: 300,
+    fontFamily: 'var(--f-system)',
+    fontWeight: 500,
   }
 
   const titleStyle: React.CSSProperties = {
     color: '#e8e1d2',
     fontSize: '26px',
     lineHeight: 1.25,
-    fontFamily: 'var(--font-cinzel), serif',
+    fontFamily: 'var(--f-editorial)',
+    fontWeight: 300,
+    letterSpacing: '-0.005em',
     marginBottom: '1rem',
   }
 
@@ -37,7 +39,7 @@ export default function MobileServices({ lang }: Props) {
     fontSize: '14px',
     color: 'var(--cream-50)',
     lineHeight: 1.9,
-    fontFamily: 'var(--font-montserrat), sans-serif',
+    fontFamily: 'var(--f-system)',
     fontWeight: 300,
     whiteSpace: 'pre-line',
   }
@@ -46,7 +48,7 @@ export default function MobileServices({ lang }: Props) {
     fontSize: '13px',
     color: 'var(--cream-50)',
     lineHeight: 1.8,
-    fontFamily: 'var(--font-montserrat), sans-serif',
+    fontFamily: 'var(--f-system)',
     fontWeight: 300,
     display: 'flex',
     alignItems: 'flex-start',

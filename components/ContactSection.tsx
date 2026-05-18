@@ -23,7 +23,7 @@ export default function ContactSection({ lang }: Props) {
     borderBottom:   '1px solid var(--cream-50)',
     padding:        '1rem 0',
     color:          '#e8e1d2',
-    fontFamily:     'var(--font-montserrat), sans-serif',
+    fontFamily:     'var(--f-system)',
     fontWeight:     300,
     fontSize:       '13px',
     letterSpacing:  '0.05em',
@@ -72,10 +72,10 @@ export default function ContactSection({ lang }: Props) {
         <p
           style={{
             textAlign:     'center',
-            fontFamily:    'var(--font-montserrat), sans-serif',
-            fontWeight:    300,
+            fontFamily:    'var(--f-system)',
+            fontWeight:    500,
             fontSize:      '11px',
-            letterSpacing: '0.3em',
+            letterSpacing: '0.20em',
             textTransform: 'uppercase',
             color:         'rgba(194,155,109,1)',
             marginBottom:  '3rem',
@@ -97,7 +97,7 @@ export default function ContactSection({ lang }: Props) {
           <p
             style={{
               textAlign:     'center',
-              fontFamily:    'var(--font-montserrat), sans-serif',
+              fontFamily:    'var(--f-system)',
               fontWeight:    300,
               fontSize:      '13px',
               letterSpacing: '0.05em',
@@ -226,7 +226,7 @@ export default function ContactSection({ lang }: Props) {
               <label
                 htmlFor="acceptance"
                 style={{
-                  fontFamily:    'var(--font-montserrat), sans-serif',
+                  fontFamily:    'var(--f-system)',
                   fontWeight:    300,
                   fontSize:      '11px',
                   letterSpacing: '0.04em',
@@ -256,7 +256,7 @@ export default function ContactSection({ lang }: Props) {
                 borderBottom:   '1px solid rgba(194,155,109,0.4)',
                 paddingBottom:  '2px',
                 color:          '#e8e1d2',
-                fontFamily:     'var(--font-montserrat), sans-serif',
+                fontFamily:     'var(--f-system)',
                 fontWeight:     300,
                 fontSize:       '11px',
                 letterSpacing:  '0.3em',
@@ -274,7 +274,7 @@ export default function ContactSection({ lang }: Props) {
               <p style={{
                 textAlign:     'center',
                 marginTop:     '1.5rem',
-                fontFamily:    'var(--font-montserrat), sans-serif',
+                fontFamily:    'var(--f-system)',
                 fontWeight:    300,
                 fontSize:      '12px',
                 color:         'var(--cream-50)',
@@ -295,7 +295,7 @@ export default function ContactSection({ lang }: Props) {
           <p
             className="footer-text-sm"
             style={{
-              fontFamily:    'var(--font-montserrat), sans-serif',
+              fontFamily:    'var(--f-system)',
               fontWeight:    300,
               fontSize:      '9px',
               color:         'var(--cream-38)',
@@ -308,7 +308,7 @@ export default function ContactSection({ lang }: Props) {
           <p
             className="footer-text-sm"
             style={{
-              fontFamily:    'var(--font-montserrat), sans-serif',
+              fontFamily:    'var(--f-system)',
               fontWeight:    300,
               fontSize:      '9px',
               color:         'var(--cream-38)',
@@ -320,7 +320,7 @@ export default function ContactSection({ lang }: Props) {
           </p>
           <p
             style={{
-              fontFamily:    'var(--font-montserrat), sans-serif',
+              fontFamily:    'var(--f-system)',
               fontWeight:    500,
               fontSize:      '10px',
               color:         'var(--cream-50)',

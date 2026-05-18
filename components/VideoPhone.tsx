@@ -148,12 +148,15 @@ export default function VideoPhone({ lang }: Props) {
 
   const labelStyle: React.CSSProperties = {
     fontSize: '11px', color: 'rgba(194,155,109,0.8)',
-    letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '0.9rem',
+    letterSpacing: '0.20em', textTransform: 'uppercase', marginBottom: '0.9rem',
+    fontFamily: 'var(--f-system)', fontWeight: 500,
   }
   const titleStyle: React.CSSProperties = {
     color: '#e8e1d2',
     fontSize: '32px', lineHeight: 1.2,
-    fontFamily: 'var(--font-cinzel), serif',
+    fontFamily: 'var(--f-editorial)',
+    fontWeight: 300,
+    letterSpacing: '-0.005em',
   }
   const bodyStyle: React.CSSProperties = {
     fontSize: '14px', color: 'var(--cream-50)', lineHeight: 1.9,

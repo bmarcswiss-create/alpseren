@@ -9,7 +9,7 @@ interface LogoProps extends Omit<SVGAttributes<SVGSVGElement>, 'viewBox'> {
 }
 
 const GOLD = '#C29B6D'
-const FONT = 'var(--font-montserrat), Montserrat, sans-serif'
+const FONT = 'var(--font-inter), "Inter", "Helvetica Neue", sans-serif'
 
 // ─── Paths extraits de ALPSEREN_Complet.svg (version corrigée) ───────────────
 const CC_A = "M2845.73,815.26c-34.1-79.35-128.06-110.94-185.45-37.89,37.83-1.24,63.24-33.47,103.99-15.94,11.1,11.61-32.98,7.52-37.72,8.19-15.05,2.13-27.09,11.57-29.68,26.98-1.49,8.83,3.41,11.99,3.42,12.77,32.76-25.01,64.68-27.85,91.3,6.7l438.7,769.3h58c-145.71-254.62-293.59-524.74-442.55-770.11Z"

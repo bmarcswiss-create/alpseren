@@ -39,9 +39,9 @@ export default function ScrollSections({ lang }: Props) {
       <p className="philo-text" style={{
         maxWidth:    '620px',
         margin:      '0 auto',
-        fontFamily:  'var(--font-montserrat), sans-serif',
+        fontFamily:  'var(--f-editorial)',
         fontWeight:  300,
-        fontSize:    '17px',
+        fontSize:    '18px',
         lineHeight:  2.0,
         color:       '#e8e1d2',
         textAlign:   'center',
