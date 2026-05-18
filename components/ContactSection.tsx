@@ -18,16 +18,16 @@ export default function ContactSection({ lang }: Props) {
 
   const inputStyle: React.CSSProperties = {
     width:          '100%',
-    background:     'transparent',
-    border:         'none',
-    borderBottom:   '1px solid var(--cream-50)',
-    padding:        '1rem 0',
+    background:     'rgba(232,225,210,.02)',
+    border:         '1px solid rgba(232,225,210,.12)',
+    borderRadius:   '10px',
+    padding:        '12px 14px',
     color:          '#e8e1d2',
     fontFamily:     'var(--f-system)',
     fontWeight:     300,
     fontSize:       '13px',
     letterSpacing:  '0.05em',
-    marginBottom:   '2rem',
+    marginBottom:   '1.4rem',
     outline:        'none',
     display:        'block',
   }
@@ -39,9 +39,9 @@ export default function ContactSection({ lang }: Props) {
   }
 
   const focusOn  = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    (e.currentTarget.style.borderBottomColor = 'var(--beige-edge)')
+    (e.currentTarget.style.borderColor = 'rgba(194,156,109,.32)')
   const focusOff = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    (e.currentTarget.style.borderBottomColor = 'var(--cream-50)')
+    (e.currentTarget.style.borderColor = 'rgba(232,225,210,.12)')
 
   return (
     <section
@@ -62,10 +62,10 @@ export default function ContactSection({ lang }: Props) {
           width:          '100%',
           margin:         '0 auto',
           padding:        '3rem 2.5rem',
-          background:     'rgba(13,13,11,0.92)',
+          background:     '#1d1916',
           backdropFilter: 'blur(10px)',
-          borderRadius:   '2px',
-          border:         '1px solid rgba(255,255,255,0.06)',
+          borderRadius:   '12px',
+          border:         '1px solid rgba(232,225,210,.12)',
           boxShadow:      '0 0 40px rgba(0,0,0,0.25)',
         }}
       >
@@ -172,9 +172,9 @@ export default function ContactSection({ lang }: Props) {
               onFocus={focusOn}
               onBlur={focusOff}
             >
-              <option value="" disabled style={{ background: '#2D2926' }}>{t.service}</option>
-              <option value="Lifestyle Services" style={{ background: '#2D2926' }}>Lifestyle Services</option>
-              <option value="Estate Management" style={{ background: '#2D2926' }}>Estate Management</option>
+              <option value="" disabled style={{ background: '#1d1916' }}>{t.service}</option>
+              <option value="Lifestyle Services" style={{ background: '#1d1916' }}>Lifestyle Services</option>
+              <option value="Estate Management" style={{ background: '#1d1916' }}>Estate Management</option>
             </select>
             <input
               type="text"
@@ -251,21 +251,22 @@ export default function ContactSection({ lang }: Props) {
               style={{
                 display:        'block',
                 margin:         '0 auto',
-                background:     'none',
+                background:     '#c29c6d',
                 border:         'none',
-                borderBottom:   '1px solid rgba(194,155,109,0.4)',
-                paddingBottom:  '2px',
-                color:          '#e8e1d2',
+                borderRadius:   '999px',
+                padding:        '13px 16px',
+                color:          '#14110e',
                 fontFamily:     'var(--f-system)',
-                fontWeight:     300,
+                fontWeight:     500,
                 fontSize:       '11px',
-                letterSpacing:  '0.3em',
+                letterSpacing:  '0.22em',
                 textTransform:  'uppercase',
                 cursor:         sending ? 'default' : 'pointer',
                 opacity:        sending ? 0.5 : 1,
+                transition:     'opacity 0.25s ease',
               }}
-              onMouseEnter={e => { if (!sending) e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.85)' }}
-              onMouseLeave={e => { if (!sending) e.currentTarget.style.borderBottomColor = 'rgba(194,155,109,0.4)' }}
+              onMouseEnter={e => { if (!sending) e.currentTarget.style.opacity = '0.82' }}
+              onMouseLeave={e => { if (!sending) e.currentTarget.style.opacity = '1' }}
             >
               {sending ? '...' : t.send}
             </button>

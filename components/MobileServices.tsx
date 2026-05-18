@@ -65,7 +65,7 @@ export default function MobileServices({ lang }: Props) {
   return (
     <div
       className="lg:hidden"
-      style={{ backgroundColor: '#1a1814' }}
+      style={{ backgroundColor: '#14110e' }}
     >
       {/* Bloc 1 — 01 / Estate Management */}
       <div style={{ ...blockCenter, padding: '4rem 1.5rem' }}>

@@ -63,7 +63,7 @@ html {
 }
 
 body {
-  background-color: #1a1814;
+  background-color: #14110e;
   color: #e8e1d2;
   font-family: var(--f-system);
   font-weight: 300;
@@ -183,7 +183,10 @@ body {
 
 /* Placeholders formulaire contact */
 .contact-input::placeholder {
-  color: var(--cream-72);
+  color: var(--cream-38);
+  font-family: var(--f-editorial);
+  font-style: italic;
+  font-size: 15px;
 }
 
 /* Marquee */
