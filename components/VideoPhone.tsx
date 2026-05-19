@@ -147,7 +147,7 @@ export default function VideoPhone({ lang }: Props) {
   const sd = translations[lang].servicesDetail
 
   const labelStyle: React.CSSProperties = {
-    fontSize: '11px', color: 'rgba(194,155,109,0.8)',
+    fontSize: '11px', color: 'var(--beige)',
     letterSpacing: '0.20em', textTransform: 'uppercase', marginBottom: '0.9rem',
     fontFamily: 'var(--f-system)', fontWeight: 500,
   }
@@ -159,7 +159,7 @@ export default function VideoPhone({ lang }: Props) {
     letterSpacing: '-0.01em',
   }
   const bodyStyle: React.CSSProperties = {
-    fontSize: '15px', color: 'var(--cream-50)', lineHeight: 1.85,
+    fontSize: '15px', color: 'var(--cream-72)', lineHeight: 1.85,
     fontFamily: 'var(--f-system)', fontWeight: 400,
   }
   const divStyle: React.CSSProperties = {
@@ -167,7 +167,7 @@ export default function VideoPhone({ lang }: Props) {
     backgroundColor: 'var(--rule)', margin: '0.85rem 0',
   }
   const listItemStyle: React.CSSProperties = {
-    fontSize: '14px', color: 'var(--cream-50)', lineHeight: 1.8,
+    fontSize: '14px', color: 'var(--cream-72)', lineHeight: 1.8,
     fontFamily: 'var(--f-system)', fontWeight: 400,
     display: 'flex', alignItems: 'flex-start', gap: '0.4rem',
   }
@@ -219,7 +219,7 @@ export default function VideoPhone({ lang }: Props) {
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.estate.items.map((item, i) => (
             <li key={i} className="font-body font-light" style={listItemStyle}>
-              <span style={{ color: 'rgba(194,155,109,0.5)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
+              <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
               {item}
             </li>
           ))}
@@ -232,7 +232,7 @@ export default function VideoPhone({ lang }: Props) {
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.lifestyle.items.map((item, i) => (
             <li key={i} className="font-body font-light" style={listItemStyle}>
-              <span style={{ color: 'rgba(194,155,109,0.5)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
+              <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
               {item}
             </li>
           ))}
