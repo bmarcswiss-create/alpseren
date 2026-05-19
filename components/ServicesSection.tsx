@@ -29,7 +29,7 @@ export default function ServicesSection({ lang }: Props) {
           <div className="flex-1 pr-8 md:pr-12">
             <p
               className="font-body font-light tracking-ultra uppercase mb-8"
-              style={{ fontSize: '11px', color: 'rgba(194,155,109,0.7)' }}
+              style={{ fontSize: '11px', color: 'var(--beige)' }}
             >
               03 / Estate Management
             </p>
@@ -38,7 +38,7 @@ export default function ServicesSection({ lang }: Props) {
                 <li
                   key={i}
                   className="font-body font-light leading-relaxed"
-                  style={{ fontSize: '14px', color: 'var(--cream-50)' }}
+                  style={{ fontSize: '14px', color: 'var(--cream-72)' }}
                 >
                   {item}
                 </li>
@@ -74,7 +74,7 @@ export default function ServicesSection({ lang }: Props) {
           <div className="flex-1 pl-8 md:pl-12">
             <p
               className="font-body font-light tracking-ultra uppercase mb-8"
-              style={{ fontSize: '11px', color: 'rgba(194,155,109,0.7)' }}
+              style={{ fontSize: '11px', color: 'var(--beige)' }}
             >
               04 / Lifestyle Services
             </p>
@@ -83,7 +83,7 @@ export default function ServicesSection({ lang }: Props) {
                 <li
                   key={i}
                   className="font-body font-light leading-relaxed"
-                  style={{ fontSize: '14px', color: 'var(--cream-50)' }}
+                  style={{ fontSize: '14px', color: 'var(--cream-72)' }}
                 >
                   {item}
                 </li>
