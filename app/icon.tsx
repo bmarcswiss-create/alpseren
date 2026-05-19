@@ -17,7 +17,7 @@ export default function Icon() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#14110e',
+        background: 'transparent',
       }}
     >
       <svg viewBox="2071 467 1400 1400" width={26} height={26}>
