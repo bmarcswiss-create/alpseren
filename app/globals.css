@@ -43,6 +43,11 @@
   --f-system:     var(--font-inter), "Helvetica Neue", sans-serif;
 }
 
+/* ── Logo SVG ── */
+.logo-text {
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+}
+
 /* Reset */
 *, *::before, *::after {
   box-sizing: border-box;

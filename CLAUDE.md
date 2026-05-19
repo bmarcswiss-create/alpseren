@@ -49,17 +49,22 @@ deux surfaces. En cas de doute, la charte ci-dessous prime sur toute règle ant�
 
 ## Typographies
 
-Trois polices, trois rôles stricts — toutes via `next/font/google` :
+Quatre polices, rôles stricts — toutes via `next/font/google` :
 
 | Variable CSS | Police | Rôle | Ne jamais utiliser pour |
 |---|---|---|---|
-| `var(--f-display)` | Cinzel 400 | Logotype ALPSEREN uniquement | Titres, corps, labels |
+| `var(--font-montserrat)` | Montserrat 400/500 | SVG logo mark uniquement (`Logo.tsx`) | HTML, titres, corps, labels |
+| `var(--f-display)` | Cinzel 400 | Logotype ALPSEREN en HTML/texte | SVG logo, titres éditoriaux, corps |
 | `var(--f-editorial)` | Cormorant Garamond 300/400/500 + italiques | Titres éditoriaux, accroches, texte philo | Interface, labels, formulaires |
-| `var(--f-system)` | Inter 300/400/500/600 | Interface, corps, labels, boutons, chiffres | Logotype, titres éditoriaux |
+| `var(--f-system)` | Inter 300/400/500/600 | Interface, corps, labels, boutons, chiffres | Logo, titres éditoriaux |
+
+> **Note logo :** Le SVG logo officiel (`ALPSEREN_Logo+Nom.svg`) utilise Montserrat.
+> Cinzel est réservé au logotype typographique HTML (header, mentions texte).
+> Ces deux polices coexistent pour des surfaces différentes — ne pas les intervertir.
 
 ### Trackings
 ```css
---track-logo:   0.34em;   /* Cinzel logotype ALPSEREN */
+--track-logo:   0.34em;   /* Cinzel logotype ALPSEREN HTML */
 --track-label:  0.20em;   /* Inter étiquettes UPPERCASE */
 --track-tight:  -0.010em; /* Cormorant titres */
 ```
@@ -68,7 +73,7 @@ Trois polices, trois rôles stricts — toutes via `next/font/google` :
 - Titres section : 26–36px, `var(--f-editorial)` 300, letter-spacing `-0.005em`
 - Corps : 13–15px, `var(--f-system)` 300
 - Étiquettes `01 /` : 10–11px, `var(--f-system)` 500, UPPERCASE, `0.20em`
-- Logotype header : `var(--f-display)`, `0.34em`
+- Logotype header HTML : `var(--f-display)`, `0.34em`
 
 ---
 
@@ -149,11 +154,16 @@ aux CTA de navigation — ceux-ci restent des liens texte.
 
 ## Logo
 
-- SVG inline dans `components/Logo.tsx` (paths extraits des fichiers source)
-- Exports : `LogoComplet` (symbole + nom + baseline), `LogoNom` (symbole + nom), `LogoSymbol` (symbole seul)
+- Fichiers sources officiels : `public/ALPSEREN_Logo+Nom.svg`, `public/ALPSEREN_Complet.svg`, `public/ALPSEREN_Symbole.svg`, `public/ALPSEREN_Nom.svg`, `public/ALPSEREN_Nom+Baseline.svg`
+- SVG inline dans `components/Logo.tsx` — paths extraits fidèlement des sources, police Montserrat
+- Exports :
+  - `LogoNom` (symbole + ALPSEREN) — **version principale**, harmonisée avec le mobile
+  - `LogoComplet` (symbole + ALPSEREN + baseline PRIVATE ESTATE & LIFESTYLE)
+  - `LogoSymbol` (symbole seul — favicon, icône compacte)
 - Variants : `light` (texte `#e8e1d2`) et `dark` (texte `#443f3e`)
-- Alt text : `ALPSEREN — Private Estate & Lifestyle`
-- Fallback fichier : `/public/logo.png`
+- Favicon : `app/icon.svg` (SVG fond sombre, auto-découvert par Next.js)
+- Apple touch icon : `app/apple-icon.tsx` (180×180 PNG généré via ImageResponse)
+- **Ne jamais modifier les paths SVG** — source de vérité = fichiers `public/ALPSEREN_*.svg`
 
 ---
 
