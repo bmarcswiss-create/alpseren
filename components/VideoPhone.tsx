@@ -172,16 +172,20 @@ export default function VideoPhone({ lang }: Props) {
     display: 'flex', alignItems: 'flex-start', gap: '0.4rem',
   }
 
-  const leftPanel = {
-    position: 'absolute' as const,
-    left: '2%', maxWidth: '280px', paddingLeft: '1rem',
-    overflow: 'hidden', pointerEvents: 'none' as const,
+  const panelBase = {
+    position:             'absolute' as const,
+    maxWidth:             '300px',
+    padding:              '1.75rem 1.5rem',
+    background:           'rgba(20,17,14,0.45)',
+    backdropFilter:       'blur(18px)',
+    WebkitBackdropFilter: 'blur(18px)',
+    borderRadius:         '12px',
+    border:               '1px solid rgba(232,225,210,.07)',
+    overflow:             'hidden',
+    pointerEvents:        'none' as const,
   }
-  const rightPanel = {
-    position: 'absolute' as const,
-    right: '2%', maxWidth: '280px', paddingRight: '1rem',
-    overflow: 'hidden', pointerEvents: 'none' as const,
-  }
+  const leftPanel  = { ...panelBase, left:  '2%' }
+  const rightPanel = { ...panelBase, right: '2%' }
 
   return (
     <div
