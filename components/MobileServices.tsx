@@ -20,7 +20,7 @@ export default function MobileServices({ lang }: Props) {
 
   const titleStyle: React.CSSProperties = {
     color: '#e8e1d2',
-    fontSize: '40px',
+    fontSize: '56px',
     lineHeight: 1.15,
     fontFamily: 'var(--f-editorial)',
     fontWeight: 300,
@@ -45,7 +45,7 @@ export default function MobileServices({ lang }: Props) {
   }
 
   const listItemStyle: React.CSSProperties = {
-    fontSize: '14px',
+    fontSize: '15px',
     color: 'var(--cream-50)',
     lineHeight: 1.8,
     fontFamily: 'var(--f-system)',

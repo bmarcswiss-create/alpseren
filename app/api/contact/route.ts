@@ -3,15 +3,30 @@ import { NextResponse } from 'next/server'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+// Clé secrète reCAPTCHA v3 — à définir dans .env.local : RECAPTCHA_SECRET_KEY
+const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY ?? ''
+
 function esc(s: string) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
 export async function POST(request: Request) {
-  const { name, email, phone, service, timeline, message, captcha } = await request.json()
+  const { name, email, phone, service, timeline, message, recaptchaToken } = await request.json()
 
-  if (captcha !== '7') {
-    return NextResponse.json({ error: 'Invalid captcha' }, { status: 400 })
+  if (RECAPTCHA_SECRET) {
+    try {
+      const verifyRes = await fetch(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${recaptchaToken}`,
+        { method: 'POST' },
+      )
+      const { success, score } = await verifyRes.json() as { success: boolean; score: number }
+      if (!success || score < 0.5) {
+        return NextResponse.json({ error: 'reCAPTCHA failed' }, { status: 400 })
+      }
+    } catch (err) {
+      console.error('[contact] reCAPTCHA verify error:', err)
+      return NextResponse.json({ error: 'reCAPTCHA verify error' }, { status: 500 })
+    }
   }
 
   try {

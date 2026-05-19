@@ -47,11 +47,14 @@ export const translations = {
       service: 'Type de service',
       timeline: 'Délai du projet',
       message: 'Message',
-      captcha: 'Captcha : 3 + 4 = ?',
       send: 'Envoyer',
       sent: 'Message transmis.',
       acceptancePrefix: "J'ai lu et j'accepte la",
       acceptanceLink: 'politique de confidentialité',
+      serviceOptions: {
+        estate:    'Gestion de résidence (Estate Management)',
+        lifestyle: 'Services lifestyle (Lifestyle Services)',
+      },
     },
   },
   en: {
@@ -100,11 +103,14 @@ export const translations = {
       service: 'Type of service',
       timeline: 'Project timeline',
       message: 'Message',
-      captcha: 'Captcha: 3 + 4 = ?',
       send: 'Send',
       sent: 'Message sent.',
       acceptancePrefix: 'I have read and accept the',
       acceptanceLink: 'privacy policy',
+      serviceOptions: {
+        estate:    'Estate Management (Gestion de résidence)',
+        lifestyle: 'Lifestyle Services (Services lifestyle)',
+      },
     },
   },
 }

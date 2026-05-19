@@ -1,8 +1,20 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { LogoComplet } from '@/components/Logo'
 import { translations, type Lang } from '@/lib/translations'
+
+// Clé publique reCAPTCHA v3 — à renseigner dans .env.local : NEXT_PUBLIC_RECAPTCHA_SITE_KEY
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ''
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (cb: () => void) => void
+      execute: (siteKey: string, options: { action: string }) => Promise<string>
+    }
+  }
+}
 
 interface Props {
   lang: Lang
@@ -10,11 +22,24 @@ interface Props {
 
 export default function ContactSection({ lang }: Props) {
   const t = translations[lang].contact
-  const [form, setForm]       = useState({ name: '', email: '', phone: '', service: '', timeline: '', message: '', captcha: '' })
+  const [form, setForm]       = useState({ name: '', email: '', phone: '', service: '', timeline: '', message: '' })
   const [sent, setSent]       = useState(false)
   const [sending, setSending] = useState(false)
   const [error, setError]     = useState(false)
-  const [captchaError, setCaptchaError] = useState(false)
+
+  useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY) return
+    const scriptId = 'recaptcha-v3'
+    if (document.getElementById(scriptId)) return
+    const script = document.createElement('script')
+    script.id  = scriptId
+    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
+    script.async = true
+    document.head.appendChild(script)
+    return () => {
+      document.getElementById(scriptId)?.remove()
+    }
+  }, [])
 
   const inputStyle: React.CSSProperties = {
     width:          '100%',
@@ -42,6 +67,30 @@ export default function ContactSection({ lang }: Props) {
     (e.currentTarget.style.borderColor = 'rgba(194,156,109,.32)')
   const focusOff = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     (e.currentTarget.style.borderColor = 'rgba(232,225,210,.12)')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSending(true)
+    setError(false)
+    try {
+      let recaptchaToken = ''
+      if (RECAPTCHA_SITE_KEY && typeof window !== 'undefined' && window.grecaptcha) {
+        await new Promise<void>(resolve => window.grecaptcha.ready(resolve))
+        recaptchaToken = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' })
+      }
+      const res = await fetch('/api/contact', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ ...form, recaptchaToken }),
+      })
+      if (!res.ok) throw new Error()
+      setSent(true)
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
+  }
 
   return (
     <section
@@ -108,29 +157,7 @@ export default function ContactSection({ lang }: Props) {
             {t.sent}
           </p>
         ) : (
-          <form onSubmit={async e => {
-            e.preventDefault()
-            setSending(true)
-            setError(false)
-            if (form.captcha.trim() !== '7') {
-              setCaptchaError(true)
-              setSending(false)
-              return
-            }
-            try {
-              const res = await fetch('/api/contact', {
-                method:  'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body:    JSON.stringify(form),
-              })
-              if (!res.ok) throw new Error()
-              setSent(true)
-            } catch {
-              setError(true)
-            } finally {
-              setSending(false)
-            }
-          }}>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               required
@@ -165,6 +192,7 @@ export default function ContactSection({ lang }: Props) {
             />
             <select
               required
+              title={t.service}
               value={form.service}
               onChange={e => setForm(f => ({ ...f, service: e.target.value }))}
               className="contact-input"
@@ -173,8 +201,8 @@ export default function ContactSection({ lang }: Props) {
               onBlur={focusOff}
             >
               <option value="" disabled style={{ background: '#1d1916' }}>{t.service}</option>
-              <option value="Lifestyle Services" style={{ background: '#1d1916' }}>Lifestyle Services</option>
-              <option value="Estate Management" style={{ background: '#1d1916' }}>Estate Management</option>
+              <option value="Estate Management" style={{ background: '#1d1916' }}>{t.serviceOptions.estate}</option>
+              <option value="Lifestyle Services" style={{ background: '#1d1916' }}>{t.serviceOptions.lifestyle}</option>
             </select>
             <input
               type="text"
@@ -197,25 +225,6 @@ export default function ContactSection({ lang }: Props) {
               onFocus={focusOn}
               onBlur={focusOff}
             />
-            <input
-              type="text"
-              required
-              placeholder={t.captcha}
-              value={form.captcha}
-              onChange={e => {
-                setCaptchaError(false)
-                setForm(f => ({ ...f, captcha: e.target.value }))
-              }}
-              className="contact-input"
-              style={inputStyle}
-              onFocus={focusOn}
-              onBlur={focusOff}
-            />
-            {captchaError && (
-              <p style={{ color: '#C29B6D', fontFamily: 'var(--font-montserrat), sans-serif', fontSize: '12px', marginTop: '-1rem', marginBottom: '1rem' }}>
-                {lang === 'fr' ? 'Réponse invalide. Merci de vérifier le captcha.' : 'Invalid answer. Please check the captcha.'}
-              </p>
-            )}
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '2.5rem' }}>
               <input
                 type="checkbox"
