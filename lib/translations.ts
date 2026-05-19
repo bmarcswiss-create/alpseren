@@ -52,8 +52,8 @@ export const translations = {
       acceptancePrefix: "J'ai lu et j'accepte la",
       acceptanceLink: 'politique de confidentialité',
       serviceOptions: {
-        estate:    'Gestion de résidence (Estate Management)',
-        lifestyle: 'Services lifestyle (Lifestyle Services)',
+        estate:    'Estate Management (Gestion de résidence)',
+        lifestyle: 'Lifestyle Services (Services du quotidien)',
       },
     },
   },
@@ -108,8 +108,8 @@ export const translations = {
       acceptancePrefix: 'I have read and accept the',
       acceptanceLink: 'privacy policy',
       serviceOptions: {
-        estate:    'Estate Management (Gestion de résidence)',
-        lifestyle: 'Lifestyle Services (Services lifestyle)',
+        estate:    'Estate Management',
+        lifestyle: 'Lifestyle Services',
       },
     },
   },
