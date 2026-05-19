@@ -319,19 +319,6 @@ export default function ContactSection({ lang }: Props) {
           >
             Genève, Suisse
           </p>
-          <p
-            style={{
-              fontFamily:    'var(--f-system)',
-              fontWeight:    500,
-              fontSize:      '10px',
-              color:         'var(--cream-50)',
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              marginTop:     '0.8rem',
-            }}
-          >
-            BENJAMIN · ALPSEREN
-          </p>
         </footer>
       </div>
     </section>

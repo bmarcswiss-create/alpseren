@@ -33,7 +33,7 @@ export function LogoNom({ variant = 'dark', className, ...rest }: LogoProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="1180 560 2560 1660"
+      viewBox="1000 540 3400 1800"
       className={className}
       aria-label="ALPSEREN"
       role="img"
@@ -62,7 +62,7 @@ export function LogoComplet({ variant = 'dark', className, ...rest }: LogoProps)
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="1180 560 2700 1950"
+      viewBox="1000 540 3400 2100"
       className={className}
       aria-label="ALPSEREN — Private Estate & Lifestyle"
       role="img"

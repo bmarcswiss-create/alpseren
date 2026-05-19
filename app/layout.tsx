@@ -54,11 +54,6 @@ export const metadata: Metadata = {
     description: "Discreet. Precise. Absolute.",
     images: ["/og-image.png"],
   },
-  icons: {
-    icon: [
-      { url: "/ALPSEREN_Symbole.svg", type: "image/svg+xml" },
-    ],
-  },
 };
 
 export default function RootLayout({

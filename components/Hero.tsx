@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { LogoComplet, LogoNom } from '@/components/Logo'
+import { LogoComplet } from '@/components/Logo'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -51,17 +51,17 @@ export default function Hero({ }: Props) {
         className="relative"
         style={{ opacity: 0 }}
       >
-        {/* Desktop lg+ : logo complet avec baseline */}
+        {/* Desktop lg+ */}
         <LogoComplet
           variant="light"
           className="hidden lg:block"
           style={{ width: '300px', maxWidth: '40vw' }}
         />
-        {/* Mobile / tablette < lg : logo + nom sans baseline */}
-        <LogoNom
+        {/* Mobile / tablette < lg */}
+        <LogoComplet
           variant="light"
           className="block lg:hidden"
-          style={{ width: 'clamp(160px, 60vw, 260px)' }}
+          style={{ width: 'clamp(180px, 60vw, 280px)' }}
         />
       </div>
     </div>
