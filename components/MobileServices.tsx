@@ -39,8 +39,8 @@ export default function MobileServices({ lang }: Props) {
     fontSize: '15px',
     color: 'var(--cream-50)',
     lineHeight: 1.85,
-    fontFamily: 'var(--f-system)',
-    fontWeight: 400,
+    fontFamily: 'var(--f-editorial)',
+    fontWeight: 300,
     whiteSpace: 'pre-line',
   }
 
@@ -48,8 +48,8 @@ export default function MobileServices({ lang }: Props) {
     fontSize: '15px',
     color: 'var(--cream-50)',
     lineHeight: 1.8,
-    fontFamily: 'var(--f-system)',
-    fontWeight: 400,
+    fontFamily: 'var(--f-editorial)',
+    fontWeight: 300,
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',

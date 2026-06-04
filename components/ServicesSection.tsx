@@ -37,8 +37,8 @@ export default function ServicesSection({ lang }: Props) {
               {t.estate.items.map((item, i) => (
                 <li
                   key={i}
-                  className="font-body font-light leading-relaxed"
-                  style={{ fontSize: '14px', color: 'var(--cream-72)' }}
+                  className="font-light leading-relaxed"
+                  style={{ fontSize: '14px', color: 'var(--cream-72)', fontFamily: 'var(--f-editorial)' }}
                 >
                   {item}
                 </li>
@@ -82,8 +82,8 @@ export default function ServicesSection({ lang }: Props) {
               {t.lifestyle.items.map((item, i) => (
                 <li
                   key={i}
-                  className="font-body font-light leading-relaxed"
-                  style={{ fontSize: '14px', color: 'var(--cream-72)' }}
+                  className="font-light leading-relaxed"
+                  style={{ fontSize: '14px', color: 'var(--cream-72)', fontFamily: 'var(--f-editorial)' }}
                 >
                   {item}
                 </li>

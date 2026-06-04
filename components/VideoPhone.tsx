@@ -160,7 +160,7 @@ export default function VideoPhone({ lang }: Props) {
   }
   const bodyStyle: React.CSSProperties = {
     fontSize: '15px', color: 'var(--cream-72)', lineHeight: 1.85,
-    fontFamily: 'var(--f-system)', fontWeight: 400,
+    fontFamily: 'var(--f-editorial)', fontWeight: 300,
   }
   const divStyle: React.CSSProperties = {
     width: '1.5rem', height: '1px',
@@ -168,7 +168,7 @@ export default function VideoPhone({ lang }: Props) {
   }
   const listItemStyle: React.CSSProperties = {
     fontSize: '15px', color: 'var(--cream-72)', lineHeight: 1.8,
-    fontFamily: 'var(--f-system)', fontWeight: 400,
+    fontFamily: 'var(--f-editorial)', fontWeight: 300,
     display: 'flex', alignItems: 'flex-start', gap: '0.4rem',
   }
 
