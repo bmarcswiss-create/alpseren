@@ -31,11 +31,14 @@ export const metadata: Metadata = {
   title: "ALPSEREN — Private Estate & Lifestyle",
   description:
     "Estate Management & Lifestyle Services — Conciergerie de luxe et gestion immobilière de prestige dans les Alpes.",
-  metadataBase: new URL("https://alpseren.ch"),
+  metadataBase: new URL("https://www.alpseren.ch"),
+  alternates: {
+    canonical: "https://www.alpseren.ch",
+  },
   openGraph: {
     title: "ALPSEREN — Private Estate & Lifestyle",
     description: "Discreet. Precise. Absolute.",
-    url: "https://alpseren.ch",
+    url: "https://www.alpseren.ch",
     siteName: "ALPSEREN",
     images: [
       {

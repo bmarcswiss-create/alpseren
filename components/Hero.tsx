@@ -46,6 +46,8 @@ export default function Hero({ }: Props) {
     >
       <div className="absolute inset-0" style={{ backgroundColor: 'rgba(45,41,38,0.52)' }} />
 
+      <h1 className="sr-only">ALPSEREN — Private Estate &amp; Lifestyle · Discreet. Precise. Absolute.</h1>
+
       <div
         ref={logoRef}
         className="relative"

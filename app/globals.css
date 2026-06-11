@@ -57,10 +57,27 @@
 
 html, body {
   background-image: url('/bg-stone.jpg');
+  background-image: image-set(
+    url('/bg-stone-1920.avif') type('image/avif'),
+    url('/bg-stone-1920.webp') type('image/webp'),
+    url('/bg-stone.jpg')       type('image/jpeg')
+  );
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+}
+
+@media (max-width: 960px) {
+  html, body {
+    background-image: url('/bg-stone.jpg');
+    background-image: image-set(
+      url('/bg-stone-960.avif') type('image/avif'),
+      url('/bg-stone-960.webp') type('image/webp'),
+      url('/bg-stone.jpg')      type('image/jpeg')
+    );
+    background-attachment: scroll;
+  }
 }
 
 html {
