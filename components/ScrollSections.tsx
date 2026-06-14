@@ -38,8 +38,8 @@ export default function ScrollSections({ lang }: Props) {
     >
       <div style={{
         position:   'relative',
-        padding:    '5rem 5rem',
-        background: 'radial-gradient(ellipse at center, rgba(20,17,14,0.82) 0%, rgba(20,17,14,0) 70%)',
+        padding:    '6rem 7rem',
+        background: 'radial-gradient(ellipse at center, rgba(20,17,14,0.94) 0%, rgba(20,17,14,0) 78%)',
       }}>
         <p className="philo-text" style={{
           maxWidth:   '680px',
