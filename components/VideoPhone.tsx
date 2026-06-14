@@ -219,6 +219,12 @@ export default function VideoPhone({ lang }: Props) {
   const innerLeft: React.CSSProperties  = { padding: '0 2rem 0 3.5rem', width: '32vw', flexShrink: 0 }
   const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 2rem', width: '32vw', flexShrink: 0 }
 
+  // Variantes haut pour 03/04 — sans grand titre, alignement flex-start + paddingTop
+  const clipLeftTop: React.CSSProperties  = { ...clipLeft,  alignItems: 'flex-start' }
+  const clipRightTop: React.CSSProperties = { ...clipRight, alignItems: 'flex-start' }
+  const innerLeftTop: React.CSSProperties  = { ...innerLeft,  paddingTop: '22vh' }
+  const innerRightTop: React.CSSProperties = { ...innerRight, paddingTop: '22vh' }
+
   return (
     <div
       ref={wrapperRef}
@@ -253,9 +259,9 @@ export default function VideoPhone({ lang }: Props) {
         </div>
       </div>
 
-      {/* 03 Estate détaillé — aplat gauche */}
-      <div ref={leftDetailRef} className="phone-panel" style={{ ...clipLeft, opacity: 0 }}>
-        <div style={innerLeft}>
+      {/* 03 Estate détaillé — aplat gauche, aligné haut */}
+      <div ref={leftDetailRef} className="phone-panel" style={{ ...clipLeftTop, opacity: 0 }}>
+        <div style={innerLeftTop}>
           <p className="font-body font-light" style={labelStyle}>03 / Estate Management</p>
           {sd.estate.intro && (
             <p className="font-body font-light" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>
@@ -273,9 +279,9 @@ export default function VideoPhone({ lang }: Props) {
         </div>
       </div>
 
-      {/* 04 Lifestyle détaillé — aplat droite */}
-      <div ref={rightDetailRef} className="phone-panel" style={{ ...clipRight, opacity: 0 }}>
-        <div style={innerRight}>
+      {/* 04 Lifestyle détaillé — aplat droite, aligné haut */}
+      <div ref={rightDetailRef} className="phone-panel" style={{ ...clipRightTop, opacity: 0 }}>
+        <div style={innerRightTop}>
           <p className="font-body font-light" style={labelStyle}>04 / Lifestyle Services</p>
           {sd.lifestyle.intro && (
             <p className="font-body font-light" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>
