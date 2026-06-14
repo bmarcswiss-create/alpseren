@@ -33,22 +33,27 @@ export default function ScrollSections({ lang }: Props) {
   return (
     <div
       ref={philoRef}
-      className="fixed inset-0 z-20 flex items-end justify-center pointer-events-none opacity-0"
-      style={{ padding: '0 2rem', paddingBottom: '10vh' }}
+      className="fixed inset-0 z-20 flex items-center justify-center pointer-events-none opacity-0"
+      style={{ padding: '0 2rem' }}
     >
-      <p className="philo-text" style={{
-        maxWidth:    '680px',
-        margin:      '0 auto',
-        fontFamily:  'var(--f-editorial)',
-        fontWeight:  400,
-        fontSize:    '32px',
-        lineHeight:  1.85,
-        color:       '#e8e1d2',
-        textAlign:   'center',
-        textShadow:  '0 1px 20px rgba(0,0,0,0.8)',
+      <div style={{
+        position:   'relative',
+        padding:    '5rem 5rem',
+        background: 'radial-gradient(ellipse at center, rgba(20,17,14,0.82) 0%, rgba(20,17,14,0) 70%)',
       }}>
-        {t.philosophie.body}
-      </p>
+        <p className="philo-text" style={{
+          maxWidth:   '680px',
+          margin:     '0 auto',
+          fontFamily: 'var(--f-editorial)',
+          fontWeight: 400,
+          fontSize:   '32px',
+          lineHeight: 1.85,
+          color:      '#e8e1d2',
+          textAlign:  'center',
+        }}>
+          {t.philosophie.body}
+        </p>
+      </div>
     </div>
   )
 }
