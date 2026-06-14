@@ -63,18 +63,17 @@ export default function VideoPhone({ lang }: Props) {
       if (tw.scrollTrigger) triggers.push(tw.scrollTrigger)
     }
 
-    // ── slideIn : fromTo fixe l'état initial à opacity:0 ────────────────
-    // ── slideOut : to évite d'écraser l'état initial ─────────────────────
-    function slideIn(el: HTMLElement | null, x: number, start: string, end: string) {
+    // Fade uniquement — pas de translation x sur les aplats plein écran
+    function slideIn(el: HTMLElement | null, start: string, end: string) {
       reg(gsap.fromTo(el,
-        { opacity: 0, x },
-        { opacity: 1, x: 0, ease: 'none',
+        { opacity: 0 },
+        { opacity: 1, ease: 'none',
           scrollTrigger: { trigger: '#scroll-container', start, end, scrub: 1 } }
       ))
     }
-    function slideOut(el: HTMLElement | null, x: number, start: string, end: string) {
+    function slideOut(el: HTMLElement | null, start: string, end: string) {
       reg(gsap.to(el,
-        { opacity: 0, x, ease: 'none',
+        { opacity: 0, ease: 'none',
           scrollTrigger: { trigger: '#scroll-container', start, end, scrub: 1 } }
       ))
     }
@@ -93,6 +92,9 @@ export default function VideoPhone({ lang }: Props) {
       }))
 
       if (!isMobile) {
+        // Centrage GSAP du téléphone (position: absolute top:50% left:50%)
+        gsap.set(phoneFrameRef.current, { xPercent: -50, yPercent: -50 })
+
         // Téléphone : apparaît 18–22%
         reg(gsap.fromTo(phoneFrameRef.current,
           { opacity: 0, scale: 0.97 },
@@ -100,21 +102,44 @@ export default function VideoPhone({ lang }: Props) {
             scrollTrigger: { trigger: c, start: '18% top', end: '22% top', scrub: 1 } }
         ))
 
+        // Phone x — se décale vers la zone ardoise opposée au texte
+        // 01 / 03 gauche → phone glisse à droite +180px
+        reg(gsap.fromTo(phoneFrameRef.current, { x: 0 }, { x: 180, ease: 'none',
+          scrollTrigger: { trigger: c, start: '20% top', end: '24% top', scrub: 1 } }))
+        reg(gsap.fromTo(phoneFrameRef.current, { x: 180 }, { x: 0, ease: 'none',
+          scrollTrigger: { trigger: c, start: '32% top', end: '35% top', scrub: 1 } }))
+
+        // 02 / 04 droite → phone glisse à gauche -180px
+        reg(gsap.fromTo(phoneFrameRef.current, { x: 0 }, { x: -180, ease: 'none',
+          scrollTrigger: { trigger: c, start: '35% top', end: '39% top', scrub: 1 } }))
+        reg(gsap.fromTo(phoneFrameRef.current, { x: -180 }, { x: 0, ease: 'none',
+          scrollTrigger: { trigger: c, start: '47% top', end: '50% top', scrub: 1 } }))
+
+        reg(gsap.fromTo(phoneFrameRef.current, { x: 0 }, { x: 180, ease: 'none',
+          scrollTrigger: { trigger: c, start: '50% top', end: '54% top', scrub: 1 } }))
+        reg(gsap.fromTo(phoneFrameRef.current, { x: 180 }, { x: 0, ease: 'none',
+          scrollTrigger: { trigger: c, start: '62% top', end: '65% top', scrub: 1 } }))
+
+        reg(gsap.fromTo(phoneFrameRef.current, { x: 0 }, { x: -180, ease: 'none',
+          scrollTrigger: { trigger: c, start: '65% top', end: '69% top', scrub: 1 } }))
+        reg(gsap.fromTo(phoneFrameRef.current, { x: -180 }, { x: 0, ease: 'none',
+          scrollTrigger: { trigger: c, start: '77% top', end: '80% top', scrub: 1 } }))
+
         // 01 Estate brief — gauche — 20–35%
-        slideIn (leftBriefRef.current,  -28, '20% top', '24% top')
-        slideOut(leftBriefRef.current,  -28, '32% top', '35% top')
+        slideIn (leftBriefRef.current,  '20% top', '24% top')
+        slideOut(leftBriefRef.current,  '32% top', '35% top')
 
         // 02 Lifestyle brief — droite — 35–50%
-        slideIn (rightBriefRef.current,  28, '35% top', '39% top')
-        slideOut(rightBriefRef.current,  28, '47% top', '50% top')
+        slideIn (rightBriefRef.current, '35% top', '39% top')
+        slideOut(rightBriefRef.current, '47% top', '50% top')
 
         // 03 Estate détaillé — gauche — 50–65%
-        slideIn (leftDetailRef.current,  -28, '50% top', '54% top')
-        slideOut(leftDetailRef.current,  -28, '62% top', '65% top')
+        slideIn (leftDetailRef.current,  '50% top', '54% top')
+        slideOut(leftDetailRef.current,  '62% top', '65% top')
 
         // 04 Lifestyle détaillé — droite — 65–80%
-        slideIn (rightDetailRef.current,  28, '65% top', '69% top')
-        slideOut(rightDetailRef.current,  28, '77% top', '80% top')
+        slideIn (rightDetailRef.current, '65% top', '69% top')
+        slideOut(rightDetailRef.current, '77% top', '80% top')
       }
 
       // VideoPhone s'efface 80–90% — révèle ContactSection
@@ -173,89 +198,111 @@ export default function VideoPhone({ lang }: Props) {
     display: 'flex', alignItems: 'flex-start', gap: '0.4rem',
   }
 
-  const panelBase = {
-    position:             'absolute' as const,
-    maxWidth:             '300px',
-    padding:              '1.75rem 1.5rem',
-    background:           'rgba(20,17,14,0.45)',
-    backdropFilter:       'blur(18px)',
-    WebkitBackdropFilter: 'blur(18px)',
-    borderRadius:         '12px',
-    border:               '1px solid rgba(232,225,210,.07)',
-    overflow:             'hidden',
-    pointerEvents:        'none' as const,
+  // Aplat gauche : couvre 0–42% en haut, 0–35% en bas (diagonale descendante)
+  const clipLeft: React.CSSProperties = {
+    position: 'absolute', inset: 0,
+    background: 'var(--night)',
+    clipPath: 'polygon(0 0, 42% 0, 35% 100%, 0 100%)',
+    pointerEvents: 'none',
+    display: 'flex', alignItems: 'center',
   }
-  const leftPanel  = { ...panelBase, left:  '2%' }
-  const rightPanel = { ...panelBase, right: '2%' }
+  // Aplat droite : miroir — couvre 58–100% en haut, 65–100% en bas
+  const clipRight: React.CSSProperties = {
+    position: 'absolute', inset: 0,
+    background: 'var(--night)',
+    clipPath: 'polygon(58% 0, 100% 0, 100% 100%, 65% 100%)',
+    pointerEvents: 'none',
+    display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
+  }
+  // Conteneur texte — largeur contrainte à l'intérieur de l'aplat
+  const innerLeft: React.CSSProperties  = { padding: '0 1rem 0 3.5rem', maxWidth: '38vw' }
+  const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 1rem', maxWidth: '38vw' }
 
   return (
     <div
       ref={wrapperRef}
-      className="fixed inset-0 flex items-center justify-center"
+      className="fixed inset-0"
       style={{ zIndex: 5 }}
     >
-      {/* 01 Estate brief — gauche */}
-      <div ref={leftBriefRef} className="phone-panel" style={{ ...leftPanel, opacity: 0 }}>
-        <p className="font-body font-light" style={labelStyle}>{t.estate.label}</p>
-        <h2 className="font-display" style={titleStyle}>
-          {t.estate.heading[0]}<br />{t.estate.heading[1]}
-        </h2>
-        <div style={divStyle} />
-        <p className="font-body font-light whitespace-pre-line" style={bodyStyle}>
-          {t.estate.body}
-        </p>
+      {/* 01 Estate brief — aplat gauche */}
+      <div ref={leftBriefRef} className="phone-panel" style={{ ...clipLeft, opacity: 0 }}>
+        <div style={innerLeft}>
+          <p className="font-body font-light" style={labelStyle}>{t.estate.label}</p>
+          <h2 className="font-display" style={titleStyle}>
+            {t.estate.heading[0]}<br />{t.estate.heading[1]}
+          </h2>
+          <div style={divStyle} />
+          <p className="font-body font-light whitespace-pre-line" style={bodyStyle}>
+            {t.estate.body}
+          </p>
+        </div>
       </div>
 
-      {/* 02 Lifestyle brief — droite */}
-      <div ref={rightBriefRef} className="phone-panel" style={{ ...rightPanel, opacity: 0 }}>
-        <p className="font-body font-light" style={labelStyle}>{t.lifestyle.label}</p>
-        <h2 className="font-display" style={titleStyle}>
-          {t.lifestyle.heading[0]}<br />{t.lifestyle.heading[1]}
-        </h2>
-        <div style={divStyle} />
-        <p className="font-body font-light whitespace-pre-line" style={bodyStyle}>
-          {t.lifestyle.body}
-        </p>
+      {/* 02 Lifestyle brief — aplat droite */}
+      <div ref={rightBriefRef} className="phone-panel" style={{ ...clipRight, opacity: 0 }}>
+        <div style={innerRight}>
+          <p className="font-body font-light" style={labelStyle}>{t.lifestyle.label}</p>
+          <h2 className="font-display" style={titleStyle}>
+            {t.lifestyle.heading[0]}<br />{t.lifestyle.heading[1]}
+          </h2>
+          <div style={divStyle} />
+          <p className="font-body font-light whitespace-pre-line" style={bodyStyle}>
+            {t.lifestyle.body}
+          </p>
+        </div>
       </div>
 
-      {/* 03 Estate détaillé — gauche */}
-      <div ref={leftDetailRef} className="phone-panel" style={{ ...leftPanel, opacity: 0 }}>
-        <p className="font-body font-light" style={labelStyle}>03 / Estate Management</p>
-        {sd.estate.intro && <p className="font-body font-light" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>{sd.estate.intro}</p>}
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-          {sd.estate.items.map((item, i) => (
-            <li key={i} className="font-body font-light" style={listItemStyle}>
-              <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
-              {item}
-            </li>
-          ))}
-        </ul>
+      {/* 03 Estate détaillé — aplat gauche */}
+      <div ref={leftDetailRef} className="phone-panel" style={{ ...clipLeft, opacity: 0 }}>
+        <div style={innerLeft}>
+          <p className="font-body font-light" style={labelStyle}>03 / Estate Management</p>
+          {sd.estate.intro && (
+            <p className="font-body font-light" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>
+              {sd.estate.intro}
+            </p>
+          )}
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            {sd.estate.items.map((item, i) => (
+              <li key={i} className="font-body font-light" style={listItemStyle}>
+                <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      {/* 04 Lifestyle détaillé — droite */}
-      <div ref={rightDetailRef} className="phone-panel" style={{ ...rightPanel, opacity: 0 }}>
-        <p className="font-body font-light" style={labelStyle}>04 / Lifestyle Services</p>
-        {sd.lifestyle.intro && <p className="font-body font-light" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>{sd.lifestyle.intro}</p>}
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-          {sd.lifestyle.items.map((item, i) => (
-            <li key={i} className="font-body font-light" style={listItemStyle}>
-              <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
-              {item}
-            </li>
-          ))}
-        </ul>
+      {/* 04 Lifestyle détaillé — aplat droite */}
+      <div ref={rightDetailRef} className="phone-panel" style={{ ...clipRight, opacity: 0 }}>
+        <div style={innerRight}>
+          <p className="font-body font-light" style={labelStyle}>04 / Lifestyle Services</p>
+          {sd.lifestyle.intro && (
+            <p className="font-body font-light" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>
+              {sd.lifestyle.intro}
+            </p>
+          )}
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            {sd.lifestyle.items.map((item, i) => (
+              <li key={i} className="font-body font-light" style={listItemStyle}>
+                <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      {/* Cadre iPhone 320 × 650 px */}
+      {/* Cadre iPhone — position absolute, centré + décalé par GSAP */}
       <div
         ref={phoneFrameRef}
         className="phone-frame-container"
         style={{
-          opacity: 0, flexShrink: 0,
+          opacity: 0,
+          position: 'absolute', top: '50%', left: '50%',
           width: '320px', height: '650px', borderRadius: '40px',
           backgroundColor: '#080808',
           border: '2px solid rgba(255,255,255,0.08)',
-          overflow: 'hidden', position: 'relative',
+          overflow: 'hidden',
           boxShadow: 'inset 1px 0 0 rgba(255,255,255,0.06), inset -1px 0 0 rgba(0,0,0,0.5)',
         }}
       >
