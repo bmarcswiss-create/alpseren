@@ -90,9 +90,9 @@ export default function Hero({ }: Props) {
         }}
       >
         <svg
-          width="36"
-          height="21"
-          viewBox="0 0 24 14"
+          width="56"
+          height="22"
+          viewBox="0 0 40 14"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
@@ -100,7 +100,7 @@ export default function Hero({ }: Props) {
           strokeLinejoin="round"
           style={{ display: 'block', animation: 'chevronBob 1.8s cubic-bezier(0.45,0,0.55,1) infinite' }}
         >
-          <polyline points="2,2 12,12 22,2" />
+          <polyline points="2,2 20,12 38,2" />
         </svg>
       </div>
     </div>

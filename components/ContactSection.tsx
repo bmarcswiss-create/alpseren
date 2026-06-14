@@ -94,6 +94,7 @@ export default function ContactSection({ lang }: Props) {
 
   return (
     <section
+      id="contact"
       style={{
         position:       'relative',
         zIndex:         40,

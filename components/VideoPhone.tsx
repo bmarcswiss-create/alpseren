@@ -39,6 +39,7 @@ export default function VideoPhone({ lang }: Props) {
     let lenisInstance: InstanceType<typeof Lenis> | null = null
     if (!isMobile) {
       lenisInstance = new Lenis()
+      ;(window as any).__lenis = lenisInstance
       lenisInstance.on('scroll', ScrollTrigger.update)
       gsap.ticker.add((time) => lenisInstance!.raf(time * 1000))
       gsap.ticker.lagSmoothing(0)
