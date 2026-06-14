@@ -268,14 +268,16 @@ export default function VideoPhone({ lang }: Props) {
               {sd.estate.intro}
             </p>
           )}
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            {sd.estate.items.map((item, i) => (
-              <li key={i} className="font-body font-light" style={listItemStyle}>
-                <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
-                {item}
-              </li>
-            ))}
-          </ul>
+          {sd.estate.items.length > 0 && (
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {sd.estate.items.map((item, i) => (
+                <li key={i} className="font-body font-light" style={listItemStyle}>
+                  <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 
@@ -288,14 +290,16 @@ export default function VideoPhone({ lang }: Props) {
               {sd.lifestyle.intro}
             </p>
           )}
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            {sd.lifestyle.items.map((item, i) => (
-              <li key={i} className="font-body font-light" style={listItemStyle}>
-                <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
-                {item}
-              </li>
-            ))}
-          </ul>
+          {sd.lifestyle.items.length > 0 && (
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {sd.lifestyle.items.map((item, i) => (
+                <li key={i} className="font-body font-light" style={listItemStyle}>
+                  <span style={{ color: 'rgba(194,156,109,0.8)', flexShrink: 0, marginTop: '0.15rem' }}>—</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 

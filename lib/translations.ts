@@ -21,22 +21,12 @@ export const translations = {
     },
     servicesDetail: {
       estate: {
-        intro: 'Nous sélectionnons, coordonnons et supervisons l\'ensemble des intervenants. Vous gardez un seul interlocuteur.',
-        items: [
-          'Ménage et grand nettoyage',
-          'Jardins et espaces extérieurs',
-          'Intendance et gestion des stocks',
-          'Surveillance saisonnière de la propriété',
-        ],
+        intro: 'Nous sélectionnons, coordonnons et supervisons l\'ensemble des intervenants — ménage et grand nettoyage, jardins et espaces extérieurs, intendance et gestion des stocks, surveillance saisonnière de la propriété. Vous gardez un seul interlocuteur.',
+        items: [],
       },
       lifestyle: {
-        intro: 'Pour chaque besoin, nous trouvons le bon prestataire et coordonnons l\'intervention de bout en bout.',
-        items: [
-          'Garde et soins des animaux',
-          'Transport et logistique équestre',
-          'Livraisons et commandes',
-          'Accompagnement administratif du quotidien',
-        ],
+        intro: 'Pour chaque besoin, nous trouvons le bon prestataire et coordonnons l\'intervention de bout en bout — garde et soins des animaux, transport et logistique équestre, livraisons et commandes, accompagnement administratif du quotidien.',
+        items: [],
       },
     },
     contact: {
