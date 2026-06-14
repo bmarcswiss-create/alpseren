@@ -26,7 +26,18 @@
       "Bash(identify /tmp/favicon-test.png)",
       "Bash(curl -s http://localhost:3000)",
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\bmarc\\\\Documents\\\\alpseren-v2\" -Recurse -Name)",
-      "Bash(Select-Object -First 30)"
+      "Bash(Select-Object -First 30)",
+      "Bash(playwright-cli -s=alpseren eval \"typeof window.__lenis !== 'undefined' ? 'lenis ok, scroll: ' + window.__lenis.scroll : 'lenis not found'\")",
+      "Bash(playwright-cli -s=alpseren eval \"window.__lenis.scrollTo\\(1500, { immediate: true }\\)\")",
+      "Bash(playwright-cli -s=alpseren eval \"window.__lenis.scroll\")",
+      "Bash(playwright-cli -s=alpseren screenshot --filename=s01-final.png)",
+      "Bash(playwright-cli -s=alpseren eval \"window.__lenis.scrollTo\\(2200, { immediate: true }\\)\")",
+      "Bash(playwright-cli -s=alpseren screenshot --filename=s02.png)",
+      "Bash(playwright-cli -s=alpseren eval \"window.__lenis.scrollTo\\(3000, { immediate: true }\\)\")",
+      "Bash(playwright-cli -s=alpseren screenshot --filename=s03.png)",
+      "Bash(playwright-cli -s=alpseren eval \"window.__lenis.scrollTo\\(3800, { immediate: true }\\)\")",
+      "Bash(playwright-cli -s=alpseren screenshot --filename=s04.png)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01-b.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01-final.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01-zoom.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s02.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s03.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s04.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\section01.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\section01-peak.png\" -ErrorAction SilentlyContinue)"
     ]
   }
 }
