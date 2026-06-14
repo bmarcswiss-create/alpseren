@@ -174,18 +174,18 @@ export default function VideoPhone({ lang }: Props) {
 
   const labelStyle: React.CSSProperties = {
     fontSize: '11px', color: 'var(--beige)',
-    letterSpacing: '0.20em', textTransform: 'uppercase', marginBottom: '0.9rem',
+    letterSpacing: '0.20em', textTransform: 'uppercase', marginBottom: '1.4rem',
     fontFamily: 'var(--f-system)', fontWeight: 500,
   }
   const titleStyle: React.CSSProperties = {
     color: '#e8e1d2',
-    fontSize: '64px', lineHeight: 1.15,
+    fontSize: '88px', lineHeight: 1.1,
     fontFamily: 'var(--f-editorial)',
     fontWeight: 300,
     letterSpacing: '-0.01em',
   }
   const bodyStyle: React.CSSProperties = {
-    fontSize: '15px', color: 'var(--cream-72)', lineHeight: 1.85,
+    fontSize: '17px', color: 'var(--cream)', lineHeight: 1.95,
     fontFamily: 'var(--f-editorial)', fontWeight: 300,
   }
   const divStyle: React.CSSProperties = {
@@ -193,7 +193,7 @@ export default function VideoPhone({ lang }: Props) {
     backgroundColor: 'var(--rule)', margin: '0.85rem 0',
   }
   const listItemStyle: React.CSSProperties = {
-    fontSize: '15px', color: 'var(--cream-72)', lineHeight: 1.8,
+    fontSize: '17px', color: 'var(--cream)', lineHeight: 1.8,
     fontFamily: 'var(--f-editorial)', fontWeight: 300,
     display: 'flex', alignItems: 'flex-start', gap: '0.4rem',
   }
@@ -215,8 +215,8 @@ export default function VideoPhone({ lang }: Props) {
     display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
   }
   // Conteneur texte — largeur contrainte à l'intérieur de l'aplat
-  const innerLeft: React.CSSProperties  = { padding: '0 1rem 0 3.5rem', maxWidth: '38vw' }
-  const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 1rem', maxWidth: '38vw' }
+  const innerLeft: React.CSSProperties  = { padding: '0 1rem 0 3.5rem', maxWidth: '28vw' }
+  const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 1rem', maxWidth: '28vw' }
 
   return (
     <div
