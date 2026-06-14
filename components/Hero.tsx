@@ -82,10 +82,10 @@ export default function Hero({ }: Props) {
         aria-hidden="true"
         style={{
           position: 'fixed',
-          bottom: '2.5rem',
+          bottom: '3rem',
           left: '50%',
           transform: 'translateX(-50%)',
-          color: 'var(--cream-50)',
+          color: 'var(--cream)',
           pointerEvents: 'none',
         }}
       >
