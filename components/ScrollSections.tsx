@@ -33,26 +33,17 @@ export default function ScrollSections({ lang }: Props) {
   return (
     <div
       ref={philoRef}
-      className="fixed inset-0 z-20 pointer-events-none opacity-0"
+      className="fixed inset-0 z-20 flex items-center justify-center pointer-events-none opacity-0"
+      style={{ padding: '0 2rem' }}
     >
-      {/* Bande diagonale opaque — même sens que VideoPhone (droite plus basse) */}
       <div style={{
-        position:  'absolute',
-        inset:     0,
-        background: 'var(--night)',
-        clipPath:  'polygon(0 38%, 100% 28%, 100% 58%, 0 68%)',
-      }} />
-      {/* Texte centré dans la bande */}
-      <div style={{
-        position:        'absolute',
-        inset:           0,
-        display:         'flex',
-        alignItems:      'center',
-        justifyContent:  'center',
-        padding:         '0 2rem',
+        position:   'relative',
+        padding:    '6rem 7rem',
+        background: 'radial-gradient(ellipse at center, rgba(20,17,14,0.94) 0%, rgba(20,17,14,0) 78%)',
       }}>
         <p className="philo-text" style={{
           maxWidth:   '680px',
+          margin:     '0 auto',
           fontFamily: 'var(--f-editorial)',
           fontWeight: 400,
           fontSize:   '32px',
