@@ -90,8 +90,8 @@ export default function Hero({ }: Props) {
         }}
       >
         <svg
-          width="24"
-          height="14"
+          width="36"
+          height="21"
           viewBox="0 0 24 14"
           fill="none"
           stroke="currentColor"
