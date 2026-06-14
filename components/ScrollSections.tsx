@@ -33,8 +33,8 @@ export default function ScrollSections({ lang }: Props) {
   return (
     <div
       ref={philoRef}
-      className="fixed inset-0 z-20 flex items-center justify-center pointer-events-none opacity-0"
-      style={{ padding: '0 2rem' }}
+      className="fixed inset-0 z-20 flex items-end justify-center pointer-events-none opacity-0"
+      style={{ padding: '0 2rem', paddingBottom: '18vh' }}
     >
       <p className="philo-text" style={{
         maxWidth:    '620px',
