@@ -37,7 +37,8 @@
       "Bash(playwright-cli -s=alpseren screenshot --filename=s03.png)",
       "Bash(playwright-cli -s=alpseren eval \"window.__lenis.scrollTo\\(3800, { immediate: true }\\)\")",
       "Bash(playwright-cli -s=alpseren screenshot --filename=s04.png)",
-      "Bash(Remove-Item \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01-b.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01-final.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01-zoom.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s02.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s03.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s04.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\section01.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\section01-peak.png\" -ErrorAction SilentlyContinue)"
+      "Bash(Remove-Item \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01-b.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01-final.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s01-zoom.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s02.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s03.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\s04.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\section01.png\", \"c:\\\\Users\\\\bmarc\\\\Documents\\\\Alpseren\\\\alpseren-v2\\\\section01-peak.png\" -ErrorAction SilentlyContinue)",
+      "Bash(playwright-cli -s=alpseren eval ' *)"
     ]
   }
 }
