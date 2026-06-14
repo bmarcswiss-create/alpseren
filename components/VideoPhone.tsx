@@ -185,15 +185,15 @@ export default function VideoPhone({ lang }: Props) {
     letterSpacing: '-0.01em',
   }
   const bodyStyle: React.CSSProperties = {
-    fontSize: '22px', color: 'var(--cream)', lineHeight: 1.9,
+    fontSize: '28px', color: 'var(--cream)', lineHeight: 1.85,
     fontFamily: 'var(--f-editorial)', fontWeight: 300,
   }
   const divStyle: React.CSSProperties = {
     width: '1.5rem', height: '1px',
-    backgroundColor: 'var(--rule)', margin: '1rem 0',
+    backgroundColor: 'var(--rule)', margin: '1.2rem 0',
   }
   const listItemStyle: React.CSSProperties = {
-    fontSize: '22px', color: 'var(--cream)', lineHeight: 1.75,
+    fontSize: '28px', color: 'var(--cream)', lineHeight: 1.7,
     fontFamily: 'var(--f-editorial)', fontWeight: 300,
     display: 'flex', alignItems: 'flex-start', gap: '0.5rem',
   }
@@ -215,8 +215,8 @@ export default function VideoPhone({ lang }: Props) {
     display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
   }
   // Conteneur texte — largeur contrainte à l'intérieur de l'aplat
-  const innerLeft: React.CSSProperties  = { padding: '0 1rem 0 3.5rem', maxWidth: '34vw' }
-  const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 1rem', maxWidth: '34vw' }
+  const innerLeft: React.CSSProperties  = { padding: '0 1rem 0 3.5rem', maxWidth: '40vw' }
+  const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 1rem', maxWidth: '40vw' }
 
   return (
     <div
