@@ -220,6 +220,7 @@ export default function VideoPhone({ lang }: Props) {
       {/* 03 Estate détaillé — gauche */}
       <div ref={leftDetailRef} className="phone-panel" style={{ ...leftPanel, opacity: 0 }}>
         <p className="font-body font-light" style={labelStyle}>03 / Estate Management</p>
+        {sd.estate.intro && <p className="font-body font-light" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>{sd.estate.intro}</p>}
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.estate.items.map((item, i) => (
             <li key={i} className="font-body font-light" style={listItemStyle}>
@@ -233,6 +234,7 @@ export default function VideoPhone({ lang }: Props) {
       {/* 04 Lifestyle détaillé — droite */}
       <div ref={rightDetailRef} className="phone-panel" style={{ ...rightPanel, opacity: 0 }}>
         <p className="font-body font-light" style={labelStyle}>04 / Lifestyle Services</p>
+        {sd.lifestyle.intro && <p className="font-body font-light" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>{sd.lifestyle.intro}</p>}
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.lifestyle.items.map((item, i) => (
             <li key={i} className="font-body font-light" style={listItemStyle}>

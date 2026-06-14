@@ -30,11 +30,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "ALPSEREN — Private Estate & Lifestyle",
   description:
-    "Estate Management & Lifestyle Services — Conciergerie de luxe et gestion immobilière de prestige dans les Alpes.",
+    "Estate & lifestyle management sur la campagne genevoise. Un interlocuteur unique pour la coordination de votre propriété et de votre quotidien.",
   metadataBase: new URL("https://alpseren.ch"),
   openGraph: {
     title: "ALPSEREN — Private Estate & Lifestyle",
-    description: "Discreet. Precise. Absolute.",
+    description: "Estate & lifestyle management sur la campagne genevoise. Un interlocuteur unique pour la coordination de votre propriété et de votre quotidien.",
     url: "https://alpseren.ch",
     siteName: "ALPSEREN",
     images: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ALPSEREN — Private Estate & Lifestyle",
-    description: "Discreet. Precise. Absolute.",
+    description: "Estate & lifestyle management sur la campagne genevoise. Un interlocuteur unique pour la coordination de votre propriété et de votre quotidien.",
     images: ["/og-image.png"],
   },
 };

@@ -12,29 +12,29 @@ export const translations = {
     estate: {
       label: '01 / Estate Management',
       heading: ['Votre Résidence,', 'Notre Vigilance'],
-      body: 'Ménage, jardinage, coordination des prestataires.\nVotre propriété entretenue à la perfection, chaque jour.',
+      body: 'Entretien, jardinage, maintenance : nous sélectionnons et supervisons chaque prestataire. Vous avez un seul interlocuteur, votre propriété a notre attention constante.',
     },
     lifestyle: {
       label: '02 / Lifestyle Services',
       heading: ['Chaque Détail,', 'Pris en Charge'],
-      body: 'Soins aux animaux, transport de chevaux, services sur-mesure.\nVotre quotidien, simplifié.',
+      body: 'Garde d\'animaux, logistique équestre, démarches du quotidien : nous trouvons le bon prestataire et coordonnons chaque intervention. Votre quotidien, simplifié.',
     },
     servicesDetail: {
       estate: {
+        intro: 'Nous sélectionnons, coordonnons et supervisons l\'ensemble des intervenants. Vous gardez un seul interlocuteur.',
         items: [
-          'Ménage régulier et grand nettoyage',
-          'Entretien des jardins et espaces extérieurs',
-          'Coordination et supervision des prestataires',
+          'Ménage et grand nettoyage',
+          'Jardins et espaces extérieurs',
           'Intendance et gestion des stocks',
           'Surveillance saisonnière de la propriété',
         ],
       },
       lifestyle: {
+        intro: 'Pour chaque besoin, nous trouvons le bon prestataire et coordonnons l\'intervention de bout en bout.',
         items: [
-          'Soins aux animaux de compagnie',
+          'Garde et soins des animaux',
           'Transport et logistique équestre',
-          'Services sur-mesure et organisation',
-          'Gestion des livraisons et commandes',
+          'Livraisons et commandes',
           'Accompagnement administratif du quotidien',
         ],
       },
@@ -68,28 +68,28 @@ export const translations = {
     estate: {
       label: '01 / Estate Management',
       heading: ['Your Residence,', 'Our Vigilance'],
-      body: 'Housekeeping, gardening, contractor coordination.\nYour property maintained to perfection, every day.',
+      body: 'Maintenance, gardening, upkeep: we select and supervise every contractor. You have a single point of contact, and your property has our constant attention.',
     },
     lifestyle: {
       label: '02 / Lifestyle Services',
       heading: ['Every Detail,', 'Taken Care Of'],
-      body: 'Animal care, horse transport, bespoke services.\nYour daily life, simplified.',
+      body: 'Pet care, equestrian logistics, everyday errands: we find the right provider and coordinate each intervention. Your daily life, simplified.',
     },
     servicesDetail: {
       estate: {
+        intro: 'We select, coordinate and supervise every contractor. You keep a single point of contact.',
         items: [
-          'Regular housekeeping and deep cleaning',
-          'Garden and outdoor space maintenance',
-          'Contractor coordination and supervision',
+          'Housekeeping and deep cleaning',
+          'Gardens and outdoor spaces',
           'Household management and inventory',
           'Seasonal property watch',
         ],
       },
       lifestyle: {
+        intro: 'For every need, we find the right provider and coordinate the work from start to finish.',
         items: [
-          'Pet care and companion animal services',
+          'Pet care and companion animals',
           'Horse transport and equestrian logistics',
-          'Bespoke services and event organisation',
           'Parcel and delivery management',
           'Daily administrative support',
         ],

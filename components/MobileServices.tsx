@@ -94,6 +94,7 @@ export default function MobileServices({ lang }: Props) {
       {/* Bloc 3 — 03 / Estate Management détaillé */}
       <div style={{ ...blockCenter, padding: '3rem 1.5rem' }}>
         <p className="mobile-section-label" style={labelStyle}>03 / Estate Management</p>
+        {sd.estate.intro && <p className="mobile-section-body" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>{sd.estate.intro}</p>}
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.estate.items.map((item, i) => (
             <li key={i} className="mobile-section-body" style={listItemStyle}>
@@ -109,6 +110,7 @@ export default function MobileServices({ lang }: Props) {
       {/* Bloc 4 — 04 / Lifestyle Services détaillé */}
       <div style={{ ...blockCenter, padding: '3rem 1.5rem' }}>
         <p className="mobile-section-label" style={labelStyle}>04 / Lifestyle Services</p>
+        {sd.lifestyle.intro && <p className="mobile-section-body" style={{ ...bodyStyle, marginBottom: '0.75rem' }}>{sd.lifestyle.intro}</p>}
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {sd.lifestyle.items.map((item, i) => (
             <li key={i} className="mobile-section-body" style={listItemStyle}>
