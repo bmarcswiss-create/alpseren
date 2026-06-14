@@ -214,9 +214,10 @@ export default function VideoPhone({ lang }: Props) {
     pointerEvents: 'none',
     display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
   }
-  // Conteneur texte — largeur contrainte à l'intérieur de l'aplat
-  const innerLeft: React.CSSProperties  = { padding: '0 1rem 0 3.5rem', maxWidth: '40vw' }
-  const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 1rem', maxWidth: '40vw' }
+  // Largeur fixe (pas maxWidth) : garantit que le contenu reste dans la zone clipPath
+  // Left : bord droit à 32% < 35% (clip minimum) — Right : bord gauche à 68% > 65% (clip minimum)
+  const innerLeft: React.CSSProperties  = { padding: '0 2rem 0 3.5rem', width: '32vw', flexShrink: 0 }
+  const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 2rem', width: '32vw', flexShrink: 0 }
 
   return (
     <div
