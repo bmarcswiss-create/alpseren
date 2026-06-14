@@ -173,8 +173,8 @@ export default function VideoPhone({ lang }: Props) {
   const sd = translations[lang].servicesDetail
 
   const labelStyle: React.CSSProperties = {
-    fontSize: '11px', color: 'var(--beige)',
-    letterSpacing: '0.20em', textTransform: 'uppercase', marginBottom: '1.4rem',
+    fontSize: '13px', color: 'var(--beige)',
+    letterSpacing: '0.20em', textTransform: 'uppercase', marginBottom: '1.6rem',
     fontFamily: 'var(--f-system)', fontWeight: 500,
   }
   const titleStyle: React.CSSProperties = {
@@ -185,17 +185,17 @@ export default function VideoPhone({ lang }: Props) {
     letterSpacing: '-0.01em',
   }
   const bodyStyle: React.CSSProperties = {
-    fontSize: '17px', color: 'var(--cream)', lineHeight: 1.95,
+    fontSize: '22px', color: 'var(--cream)', lineHeight: 1.9,
     fontFamily: 'var(--f-editorial)', fontWeight: 300,
   }
   const divStyle: React.CSSProperties = {
     width: '1.5rem', height: '1px',
-    backgroundColor: 'var(--rule)', margin: '0.85rem 0',
+    backgroundColor: 'var(--rule)', margin: '1rem 0',
   }
   const listItemStyle: React.CSSProperties = {
-    fontSize: '17px', color: 'var(--cream)', lineHeight: 1.8,
+    fontSize: '22px', color: 'var(--cream)', lineHeight: 1.75,
     fontFamily: 'var(--f-editorial)', fontWeight: 300,
-    display: 'flex', alignItems: 'flex-start', gap: '0.4rem',
+    display: 'flex', alignItems: 'flex-start', gap: '0.5rem',
   }
 
   // Aplat gauche : couvre 0–42% en haut, 0–35% en bas (diagonale descendante)
@@ -215,8 +215,8 @@ export default function VideoPhone({ lang }: Props) {
     display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
   }
   // Conteneur texte — largeur contrainte à l'intérieur de l'aplat
-  const innerLeft: React.CSSProperties  = { padding: '0 1rem 0 3.5rem', maxWidth: '28vw' }
-  const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 1rem', maxWidth: '28vw' }
+  const innerLeft: React.CSSProperties  = { padding: '0 1rem 0 3.5rem', maxWidth: '34vw' }
+  const innerRight: React.CSSProperties = { padding: '0 3.5rem 0 1rem', maxWidth: '34vw' }
 
   return (
     <div
