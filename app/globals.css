@@ -152,6 +152,10 @@ body {
   .header-lang-btn {
     font-size: 11px !important;
   }
+  header {
+    padding-top: 1.75rem !important;
+    padding-bottom: 1.75rem !important;
+  }
 
   /* Philosophie */
   .philo-text {
