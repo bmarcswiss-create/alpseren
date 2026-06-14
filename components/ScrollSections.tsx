@@ -34,14 +34,14 @@ export default function ScrollSections({ lang }: Props) {
     <div
       ref={philoRef}
       className="fixed inset-0 z-20 flex items-end justify-center pointer-events-none opacity-0"
-      style={{ padding: '0 2rem', paddingBottom: '18vh' }}
+      style={{ padding: '0 2rem', paddingBottom: '10vh' }}
     >
       <p className="philo-text" style={{
-        maxWidth:    '620px',
+        maxWidth:    '680px',
         margin:      '0 auto',
         fontFamily:  'var(--f-editorial)',
         fontWeight:  400,
-        fontSize:    '27px',
+        fontSize:    '32px',
         lineHeight:  1.85,
         color:       '#e8e1d2',
         textAlign:   'center',

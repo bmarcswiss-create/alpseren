@@ -1,0 +1,90 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic:
+      - paragraph: 01 / Estate Management
+      - heading "Votre Résidence, Notre Vigilance" [level=2]:
+        - text: Votre Résidence,
+        - text: Notre Vigilance
+      - paragraph: "Entretien, jardinage, maintenance : nous sélectionnons et supervisons chaque prestataire. Vous avez un seul interlocuteur, votre propriété a notre attention constante."
+    - generic:
+      - paragraph: 02 / Lifestyle Services
+      - heading "Chaque Détail, Pris en Charge" [level=2]:
+        - text: Chaque Détail,
+        - text: Pris en Charge
+      - paragraph: "Garde d'animaux, logistique équestre, démarches du quotidien : nous trouvons le bon prestataire et coordonnons chaque intervention. Votre quotidien, simplifié."
+    - generic:
+      - paragraph: 03 / Estate Management
+      - paragraph: Nous sélectionnons, coordonnons et supervisons l'ensemble des intervenants. Vous gardez un seul interlocuteur.
+      - list:
+        - listitem:
+          - generic: —
+          - text: Ménage et grand nettoyage
+        - listitem:
+          - generic: —
+          - text: Jardins et espaces extérieurs
+        - listitem:
+          - generic: —
+          - text: Intendance et gestion des stocks
+        - listitem:
+          - generic: —
+          - text: Surveillance saisonnière de la propriété
+    - generic:
+      - paragraph: 04 / Lifestyle Services
+      - paragraph: Pour chaque besoin, nous trouvons le bon prestataire et coordonnons l'intervention de bout en bout.
+      - list:
+        - listitem:
+          - generic: —
+          - text: Garde et soins des animaux
+        - listitem:
+          - generic: —
+          - text: Transport et logistique équestre
+        - listitem:
+          - generic: —
+          - text: Livraisons et commandes
+        - listitem:
+          - generic: —
+          - text: Accompagnement administratif du quotidien
+  - generic [ref=e6]:
+    - img "ALPSEREN — Private Estate & Lifestyle" [ref=e9]:
+      - generic [ref=e16]: ALPSEREN
+      - generic [ref=e17]: PRIVATE ESTATE & LIFESTYLE
+    - generic:
+      - img
+  - generic:
+    - paragraph: "Derrière chaque grande résidence se cache une exigence invisible : tout doit fonctionner, toujours, sans que cela ne se voie. ALPSEREN est né pour porter cette exigence — avec la discrétion d'un confident, la précision d'un professionnel et la réactivité d'un partenaire toujours présent. Coordination, supervision, esthétique et technologie au service de votre tranquillité."
+  - banner [ref=e18]:
+    - button "Retour en haut" [ref=e20] [cursor=pointer]:
+      - img "ALPSEREN" [ref=e21]
+    - generic [ref=e28]:
+      - button "Contact" [ref=e29] [cursor=pointer]
+      - generic [ref=e31]:
+        - button "FR" [ref=e32] [cursor=pointer]
+        - generic [ref=e33]: "|"
+        - button "EN" [ref=e34] [cursor=pointer]
+  - generic [ref=e37]:
+    - paragraph [ref=e38]: 05 / CONTACT
+    - generic [ref=e40]:
+      - textbox "Prénom & Nom" [ref=e41]
+      - textbox "Email" [ref=e42]
+      - textbox "Téléphone" [ref=e43]
+      - combobox "Type de service" [ref=e44] [cursor=pointer]:
+        - option "Type de service" [disabled] [selected]
+        - option "Estate Management (Gestion de résidence)"
+        - option "Lifestyle Services (Services du quotidien)"
+      - textbox "Délai du projet" [ref=e45]
+      - textbox "Message" [ref=e46]
+      - generic [ref=e47]:
+        - checkbox "J'ai lu et j'accepte la politique de confidentialité" [ref=e48] [cursor=pointer]
+        - generic [ref=e49] [cursor=pointer]:
+          - text: J'ai lu et j'accepte la
+          - link "politique de confidentialité" [ref=e50]:
+            - /url: /confidentialite
+      - button "Envoyer" [ref=e51] [cursor=pointer]
+    - generic [ref=e52]:
+      - img "ALPSEREN — Private Estate & Lifestyle" [ref=e53]:
+        - generic [ref=e60]: ALPSEREN
+        - generic [ref=e61]: PRIVATE ESTATE & LIFESTYLE
+      - paragraph [ref=e62]: © 2026 ALPSEREN. Tous droits réservés.
+      - paragraph [ref=e63]: Genève, Suisse
+  - button "Open Next.js Dev Tools" [ref=e69] [cursor=pointer]:
+    - img [ref=e70]
