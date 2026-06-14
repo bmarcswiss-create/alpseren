@@ -12,8 +12,9 @@ interface Props {
 }
 
 export default function Hero({ }: Props) {
-  const heroRef = useRef<HTMLDivElement>(null)
-  const logoRef = useRef<HTMLDivElement>(null)
+  const heroRef    = useRef<HTMLDivElement>(null)
+  const logoRef    = useRef<HTMLDivElement>(null)
+  const chevronRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const el = heroRef.current
@@ -35,6 +36,17 @@ export default function Hero({ }: Props) {
         scrub: 1,
         onLeave:     () => { el.style.pointerEvents = 'none' },
         onEnterBack: () => { el.style.pointerEvents = 'auto' },
+      },
+    })
+
+    gsap.to(chevronRef.current, {
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#scroll-container',
+        start: 'top top',
+        end: '4% top',
+        scrub: 1,
       },
     })
   }, [])
@@ -63,6 +75,33 @@ export default function Hero({ }: Props) {
           className="block lg:hidden"
           style={{ width: 'clamp(180px, 60vw, 280px)' }}
         />
+      </div>
+
+      <div
+        ref={chevronRef}
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          bottom: '2.5rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          color: 'var(--cream-50)',
+          pointerEvents: 'none',
+        }}
+      >
+        <svg
+          width="24"
+          height="14"
+          viewBox="0 0 24 14"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{ display: 'block', animation: 'chevronBob 1.8s cubic-bezier(0.45,0,0.55,1) infinite' }}
+        >
+          <polyline points="2,2 12,12 22,2" />
+        </svg>
       </div>
     </div>
   )
