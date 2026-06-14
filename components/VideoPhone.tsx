@@ -32,6 +32,9 @@ export default function VideoPhone({ lang }: Props) {
 
     const isMobile = window.innerWidth <= 1023
 
+    // Centrage immédiat — évite le flash de position incorrecte sur mobile et desktop
+    gsap.set(phoneFrameRef.current, { xPercent: -50, yPercent: -50 })
+
     const frames: HTMLImageElement[] = new Array(FRAME_COUNT)
     let loadedCount  = 0
     let currentFrame = 0
@@ -92,9 +95,6 @@ export default function VideoPhone({ lang }: Props) {
       }))
 
       if (!isMobile) {
-        // Centrage GSAP du téléphone (position: absolute top:50% left:50%)
-        gsap.set(phoneFrameRef.current, { xPercent: -50, yPercent: -50 })
-
         // Téléphone : apparaît 18–22%
         reg(gsap.fromTo(phoneFrameRef.current,
           { opacity: 0, scale: 0.97 },
