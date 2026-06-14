@@ -33,7 +33,7 @@ export default function ScrollSections({ lang }: Props) {
   return (
     <div
       ref={philoRef}
-      className="fixed inset-0 z-20 flex items-center justify-center pointer-events-none opacity-0"
+      className="fixed inset-0 z-20 hidden lg:flex items-center justify-center pointer-events-none opacity-0"
       style={{ padding: '0 2rem' }}
     >
       <div style={{
