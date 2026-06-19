@@ -46,7 +46,7 @@ export async function POST(request: Request) {
         { method: 'POST' },
       )
       const { success, score } = await verifyRes.json() as { success: boolean; score: number }
-      if (!success || score < 0.5) {
+      if (!success || score < 0.3) {
         return NextResponse.json({ error: 'reCAPTCHA failed' }, { status: 400 })
       }
     } catch (err) {
