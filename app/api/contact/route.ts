@@ -45,9 +45,11 @@ export async function POST(request: Request) {
         `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${recaptchaToken}`,
         { method: 'POST' },
       )
-      const { success, score } = await verifyRes.json() as { success: boolean; score: number }
+      const recaptchaBody = await verifyRes.json() as { success: boolean; score: number; 'error-codes'?: string[] }
+      console.log('[contact] reCAPTCHA response:', JSON.stringify(recaptchaBody))
+      const { success, score } = recaptchaBody
       if (!success || score < 0.3) {
-        return NextResponse.json({ error: 'reCAPTCHA failed' }, { status: 400 })
+        return NextResponse.json({ error: 'reCAPTCHA failed', detail: recaptchaBody }, { status: 400 })
       }
     } catch (err) {
       console.error('[contact] reCAPTCHA verify error:', err)
