@@ -49,8 +49,8 @@ export const translations = {
       },
       service: 'Service demandé',
       serviceOptions: {
-        estate:    'Estate Management',
-        lifestyle: 'Lifestyle Services',
+        estate:    'Estate Management (Gestion de propriété)',
+        lifestyle: 'Lifestyle Services (Services du quotidien)',
       },
       timeline: 'Délai souhaité',
       timelineOptions: {
