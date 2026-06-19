@@ -23,7 +23,6 @@ export async function POST(request: Request) {
     address?:       string
     npa?:           string
     localite?:      string
-    canton?:        string
     clientType?:    string
     service?:       string
     timeline?:      string
@@ -34,7 +33,7 @@ export async function POST(request: Request) {
 
   const {
     civility = '', firstName = '', lastName = '', email = '', phone = '',
-    address = '', npa = '', localite = '', canton = '', clientType = '',
+    address = '', npa = '', localite = '', clientType = '',
     service = '', timeline = '', message = '', consent = false,
     recaptchaToken = '',
   } = body
@@ -82,7 +81,6 @@ export async function POST(request: Request) {
   ${line('Adresse',        address)}
   ${line('NPA',            npa)}
   ${line('Localité',       localite)}
-  ${line('Canton',         canton)}
   ${line('Type de client', clientType)}
   ${line('Service',        service)}
   ${line('Délai',          timeline)}
@@ -99,7 +97,6 @@ export async function POST(request: Request) {
     `Adresse : ${address}`,
     `NPA : ${npa}`,
     `Localité : ${localite}`,
-    `Canton : ${canton}`,
     `Type de client : ${clientType}`,
     `Service : ${service}`,
     `Délai : ${timeline}`,

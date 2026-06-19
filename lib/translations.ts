@@ -40,7 +40,6 @@ export const translations = {
       address:   'Adresse',
       npa:       'NPA',
       localite:  'Localité',
-      canton:    'Canton',
       clientType: 'Type de client',
       clientTypeOptions: {
         particulier: 'Particulier',
@@ -121,7 +120,6 @@ export const translations = {
       address:   'Address',
       npa:       'Postcode',
       localite:  'City',
-      canton:    'Canton',
       clientType: 'Client type',
       clientTypeOptions: {
         particulier: 'Individual',

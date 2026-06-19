@@ -15,34 +15,6 @@ declare global {
   }
 }
 
-const CANTONS_CH = [
-  { code: 'AG', label: 'AG — Argovie' },
-  { code: 'AI', label: 'AI — Appenzell Rh.-Int.' },
-  { code: 'AR', label: 'AR — Appenzell Rh.-Ext.' },
-  { code: 'BE', label: 'BE — Berne' },
-  { code: 'BL', label: 'BL — Bâle-Campagne' },
-  { code: 'BS', label: 'BS — Bâle-Ville' },
-  { code: 'FR', label: 'FR — Fribourg' },
-  { code: 'GE', label: 'GE — Genève' },
-  { code: 'GL', label: 'GL — Glaris' },
-  { code: 'GR', label: 'GR — Grisons' },
-  { code: 'JU', label: 'JU — Jura' },
-  { code: 'LU', label: 'LU — Lucerne' },
-  { code: 'NE', label: 'NE — Neuchâtel' },
-  { code: 'NW', label: 'NW — Nidwald' },
-  { code: 'OW', label: 'OW — Obwald' },
-  { code: 'SG', label: 'SG — Saint-Gall' },
-  { code: 'SH', label: 'SH — Schaffhouse' },
-  { code: 'SO', label: 'SO — Soleure' },
-  { code: 'SZ', label: 'SZ — Schwytz' },
-  { code: 'TG', label: 'TG — Thurgovie' },
-  { code: 'TI', label: 'TI — Tessin' },
-  { code: 'UR', label: 'UR — Uri' },
-  { code: 'VD', label: 'VD — Vaud' },
-  { code: 'VS', label: 'VS — Valais' },
-  { code: 'ZG', label: 'ZG — Zoug' },
-  { code: 'ZH', label: 'ZH — Zurich' },
-]
 
 interface Props { lang: Lang }
 
@@ -58,7 +30,6 @@ export default function ContactSection({ lang }: Props) {
     address:    '',
     npa:        '',
     localite:   '',
-    canton:     '',
     clientType: '',
     service:    '',
     timeline:   '',
@@ -259,17 +230,6 @@ export default function ContactSection({ lang }: Props) {
                 onFocus={focusOn} onBlur={focusOff} />
             </div>
 
-            {/* Canton */}
-            <div style={mb}>
-              <select value={form.canton} onChange={set('canton')}
-                className="contact-input" style={sSel}
-                onFocus={focusOn} onBlur={focusOff}>
-                <option value="" style={optS}>{t.canton}</option>
-                {CANTONS_CH.map(c => (
-                  <option key={c.code} value={c.code} style={optS}>{c.label}</option>
-                ))}
-              </select>
-            </div>
 
             {/* Type de client */}
             <div style={mb}>

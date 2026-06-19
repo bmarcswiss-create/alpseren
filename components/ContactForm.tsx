@@ -11,7 +11,7 @@ export default function ContactForm({ lang }: Props) {
   const t = translations[lang].contact
   const [form, setForm] = useState({
     civility: '', firstName: '', lastName: '', email: '', phone: '',
-    address: '', npa: '', localite: '', canton: '',
+    address: '', npa: '', localite: '',
     clientType: '', service: '', timeline: '', message: '',
   })
   const [sent, setSent]       = useState(false)
