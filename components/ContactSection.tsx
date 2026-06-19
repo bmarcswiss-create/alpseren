@@ -26,6 +26,7 @@ export default function ContactSection({ lang }: Props) {
     firstName:  '',
     lastName:   '',
     email:      '',
+    indicatif:  '+41',
     phone:      '',
     address:    '',
     npa:        '',
@@ -98,7 +99,12 @@ export default function ContactSection({ lang }: Props) {
       const res = await fetch('/api/contact', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ ...form, consent, recaptchaToken }),
+        body:    JSON.stringify({
+          ...form,
+          phone: `${form.indicatif} ${form.phone}`,
+          consent,
+          recaptchaToken,
+        }),
       })
       if (!res.ok) throw new Error()
       setSent(true)
@@ -197,14 +203,33 @@ export default function ContactSection({ lang }: Props) {
                 onFocus={focusOn} onBlur={focusOff} />
             </div>
 
-            {/* Email / Téléphone */}
-            <div style={row}>
+            {/* Email */}
+            <div style={mb}>
               <input type="email" required placeholder={t.email}
                 value={form.email} onChange={set('email')}
-                className="contact-input" style={sRow}
+                className="contact-input" style={sInp}
                 onFocus={focusOn} onBlur={focusOff} />
+            </div>
+
+            {/* Téléphone */}
+            <div style={row}>
+              <select value={form.indicatif}
+                onChange={e => setForm(f => ({ ...f, indicatif: e.target.value }))}
+                className="contact-input"
+                style={{ ...sSel, width: '90px', flexShrink: 0 }}
+                onFocus={focusOn} onBlur={focusOff}>
+                <option value="+41"  style={optS}>🇨🇭 +41</option>
+                <option value="+33"  style={optS}>🇫🇷 +33</option>
+                <option value="+352" style={optS}>🇱🇺 +352</option>
+                <option value="+32"  style={optS}>🇧🇪 +32</option>
+                <option value="+44"  style={optS}>🇬🇧 +44</option>
+                <option value="+49"  style={optS}>🇩🇪 +49</option>
+                <option value="+39"  style={optS}>🇮🇹 +39</option>
+                <option value="+34"  style={optS}>🇪🇸 +34</option>
+                <option value="+1"   style={optS}>🇺🇸 +1</option>
+                <option value="+971" style={optS}>🇦🇪 +971</option>
+              </select>
               <input type="tel" required placeholder={t.phone}
-                pattern="[+\d][\d\s\-\.\(\)]{5,18}"
                 value={form.phone} onChange={set('phone')}
                 className="contact-input" style={sRow}
                 onFocus={focusOn} onBlur={focusOff} />
