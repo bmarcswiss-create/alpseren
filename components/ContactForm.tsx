@@ -9,10 +9,14 @@ interface Props {
 
 export default function ContactForm({ lang }: Props) {
   const t = translations[lang].contact
-  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', timeline: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [form, setForm] = useState({
+    civility: '', firstName: '', lastName: '', email: '', phone: '',
+    address: '', npa: '', localite: '', canton: '',
+    clientType: '', service: '', timeline: '', message: '',
+  })
+  const [sent, setSent]       = useState(false)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
+  const [error, setError]     = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -22,7 +26,7 @@ export default function ContactForm({ lang }: Props) {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, consent: true }),
       })
       if (!res.ok) throw new Error()
       setSent(true)
@@ -51,80 +55,60 @@ export default function ContactForm({ lang }: Props) {
       </p>
       <div className="w-12 h-px bg-icon" />
 
-      <div className="flex flex-col gap-2">
-        <label className={labelClass}>{t.name}</label>
-        <input
-          type="text"
-          required
-          value={form.name}
-          onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-          className={inputClass}
-        />
+      <div className="flex gap-4">
+        <div className="flex flex-col gap-2 flex-1">
+          <label className={labelClass}>{t.firstName}</label>
+          <input type="text" required value={form.firstName}
+            onChange={e => setForm(f => ({ ...f, firstName: e.target.value }))}
+            className={inputClass} />
+        </div>
+        <div className="flex flex-col gap-2 flex-1">
+          <label className={labelClass}>{t.lastName}</label>
+          <input type="text" required value={form.lastName}
+            onChange={e => setForm(f => ({ ...f, lastName: e.target.value }))}
+            className={inputClass} />
+        </div>
       </div>
 
       <div className="flex flex-col gap-2">
         <label className={labelClass}>{t.email}</label>
-        <input
-          type="email"
-          required
-          value={form.email}
+        <input type="email" required value={form.email}
           onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-          className={inputClass}
-        />
+          className={inputClass} />
       </div>
 
       <div className="flex flex-col gap-2">
         <label className={labelClass}>{t.phone}</label>
-        <input
-          type="tel"
-          value={form.phone}
+        <input type="tel" required value={form.phone}
           onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-          className={inputClass}
-        />
+          className={inputClass} />
       </div>
 
       <div className="flex flex-col gap-2">
         <label className={labelClass}>{t.service}</label>
-        <select
-          required
-          value={form.service}
+        <select required value={form.service}
           onChange={e => setForm(f => ({ ...f, service: e.target.value }))}
-          className={inputClass + ' cursor-pointer appearance-none'}
-        >
+          className={inputClass + ' cursor-pointer appearance-none'}>
           <option value="" disabled>—</option>
-          <option value="Lifestyle Services">Lifestyle Services</option>
-          <option value="Estate Management">Estate Management</option>
+          <option value="Jardin">{t.serviceOptions.jardin}</option>
+          <option value="Ménage">{t.serviceOptions.menage}</option>
+          <option value="Organisation">{t.serviceOptions.organisation}</option>
+          <option value="Petits travaux">{t.serviceOptions.travaux}</option>
+          <option value="Estate Management">{t.serviceOptions.estate}</option>
+          <option value="Autre">{t.serviceOptions.autre}</option>
         </select>
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className={labelClass}>{t.timeline}</label>
-        <input
-          type="text"
-          value={form.timeline}
-          onChange={e => setForm(f => ({ ...f, timeline: e.target.value }))}
-          className={inputClass}
-        />
-      </div>
-
-      <div className="flex flex-col gap-2">
         <label className={labelClass}>{t.message}</label>
-        <textarea
-          required
-          rows={3}
-          value={form.message}
+        <textarea required rows={3} value={form.message}
           onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-          className={inputClass + ' resize-none'}
-        />
+          className={inputClass + ' resize-none'} />
       </div>
 
       <div className="flex items-start gap-3">
-        <input
-          type="checkbox"
-          id="acceptance"
-          required
-          className="mt-0.5 accent-icon cursor-pointer"
-        />
+        <input type="checkbox" id="acceptance" required
+          className="mt-0.5 accent-icon cursor-pointer" />
         <label htmlFor="acceptance" className="font-body font-light text-xs text-background/40 leading-relaxed cursor-pointer">
           {t.acceptancePrefix}{' '}
           <a href="/confidentialite" className="border-b border-background/30 hover:border-background/60 transition-colors duration-300">
@@ -139,11 +123,8 @@ export default function ContactForm({ lang }: Props) {
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="self-start font-body font-light text-xs tracking-ultra uppercase text-icon border-b border-icon/40 hover:border-icon pb-0.5 transition-colors duration-300 disabled:opacity-40"
-      >
+      <button type="submit" disabled={loading}
+        className="self-start font-body font-light text-xs tracking-ultra uppercase text-icon border-b border-icon/40 hover:border-icon pb-0.5 transition-colors duration-300 disabled:opacity-40">
         {loading ? (lang === 'fr' ? 'Envoi...' : 'Sending...') : t.send}
       </button>
     </form>
