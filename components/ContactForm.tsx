@@ -90,12 +90,8 @@ export default function ContactForm({ lang }: Props) {
           onChange={e => setForm(f => ({ ...f, service: e.target.value }))}
           className={inputClass + ' cursor-pointer appearance-none'}>
           <option value="" disabled>—</option>
-          <option value="Jardin">{t.serviceOptions.jardin}</option>
-          <option value="Ménage">{t.serviceOptions.menage}</option>
-          <option value="Organisation">{t.serviceOptions.organisation}</option>
-          <option value="Petits travaux">{t.serviceOptions.travaux}</option>
           <option value="Estate Management">{t.serviceOptions.estate}</option>
-          <option value="Autre">{t.serviceOptions.autre}</option>
+          <option value="Lifestyle Services">{t.serviceOptions.lifestyle}</option>
         </select>
       </div>
 

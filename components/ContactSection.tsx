@@ -250,12 +250,8 @@ export default function ContactSection({ lang }: Props) {
                 className="contact-input" style={sSel}
                 onFocus={focusOn} onBlur={focusOff}>
                 <option value="" disabled style={optS}>{t.service}</option>
-                <option value="Jardin"            style={optS}>{t.serviceOptions.jardin}</option>
-                <option value="Ménage"            style={optS}>{t.serviceOptions.menage}</option>
-                <option value="Organisation"      style={optS}>{t.serviceOptions.organisation}</option>
-                <option value="Petits travaux"    style={optS}>{t.serviceOptions.travaux}</option>
                 <option value="Estate Management" style={optS}>{t.serviceOptions.estate}</option>
-                <option value="Autre"             style={optS}>{t.serviceOptions.autre}</option>
+                <option value="Lifestyle Services" style={optS}>{t.serviceOptions.lifestyle}</option>
               </select>
             </div>
 

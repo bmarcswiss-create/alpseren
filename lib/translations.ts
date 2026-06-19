@@ -49,12 +49,8 @@ export const translations = {
       },
       service: 'Service demandé',
       serviceOptions: {
-        jardin:       'Jardin',
-        menage:       'Ménage',
-        organisation: 'Organisation',
-        travaux:      'Petits travaux',
-        estate:       'Estate Management',
-        autre:        'Autre',
+        estate:    'Estate Management',
+        lifestyle: 'Lifestyle Services',
       },
       timeline: 'Délai souhaité',
       timelineOptions: {
@@ -129,12 +125,8 @@ export const translations = {
       },
       service: 'Service requested',
       serviceOptions: {
-        jardin:       'Gardening',
-        menage:       'Cleaning',
-        organisation: 'Organisation',
-        travaux:      'Small works',
-        estate:       'Estate Management',
-        autre:        'Other',
+        estate:    'Estate Management',
+        lifestyle: 'Lifestyle Services',
       },
       timeline: 'Preferred timeline',
       timelineOptions: {
