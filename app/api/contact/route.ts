@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY ?? ''
+
 function esc(s: string) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
@@ -26,13 +28,31 @@ export async function POST(request: Request) {
     timeline?:      string
     message?:       string
     consent?:       boolean
+    recaptchaToken?: string
   }
 
   const {
     civility = '', firstName = '', lastName = '', email = '', phone = '',
     address = '', npa = '', localite = '', clientType = '',
     service = '', timeline = '', message = '', consent = false,
+    recaptchaToken = '',
   } = body
+
+  // ── reCAPTCHA ─────────────────────────────────────────────────────────────
+  if (RECAPTCHA_SECRET && recaptchaToken) {
+    try {
+      const verifyRes = await fetch(
+        `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${recaptchaToken}`,
+        { method: 'POST' },
+      )
+      const { success, score } = await verifyRes.json() as { success: boolean; score: number }
+      if (success && score < 0.3) {
+        return NextResponse.json({ error: 'reCAPTCHA failed' }, { status: 400 })
+      }
+    } catch {
+      // Ne pas bloquer si la vérification échoue
+    }
+  }
 
   // ── Validation serveur ───────────────────────────────────────────────────
   if (!firstName.trim() || !lastName.trim() || !email.trim() || !phone.trim() || !service.trim() || !message.trim()) {
