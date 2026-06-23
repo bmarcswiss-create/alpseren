@@ -1,20 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { LogoComplet } from '@/components/Logo'
 import { translations, type Lang } from '@/lib/translations'
-
-const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ''
-
-declare global {
-  interface Window {
-    grecaptcha: {
-      ready: (cb: () => void) => void
-      execute: (siteKey: string, options: { action: string }) => Promise<string>
-    }
-  }
-}
-
 
 interface Props { lang: Lang }
 
@@ -40,18 +28,6 @@ export default function ContactSection({ lang }: Props) {
   const [sent,     setSent]     = useState(false)
   const [sending,  setSending]  = useState(false)
   const [error,    setError]    = useState(false)
-
-  useEffect(() => {
-    if (!RECAPTCHA_SITE_KEY) return
-    const scriptId = 'recaptcha-v3'
-    if (document.getElementById(scriptId)) return
-    const script = document.createElement('script')
-    script.id    = scriptId
-    script.src   = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
-    script.async = true
-    document.head.appendChild(script)
-    return () => { document.getElementById(scriptId)?.remove() }
-  }, [])
 
   // ── Styles ──────────────────────────────────────────────────────────────
   const base: React.CSSProperties = {
@@ -91,11 +67,6 @@ export default function ContactSection({ lang }: Props) {
     setSending(true)
     setError(false)
     try {
-      let recaptchaToken = ''
-      if (RECAPTCHA_SITE_KEY && typeof window !== 'undefined' && window.grecaptcha) {
-        await new Promise<void>(resolve => window.grecaptcha.ready(resolve))
-        recaptchaToken = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact' })
-      }
       const res = await fetch('/api/contact', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -103,7 +74,6 @@ export default function ContactSection({ lang }: Props) {
           ...form,
           phone: `${form.indicatif} ${form.phone}`,
           consent,
-          recaptchaToken,
         }),
       })
       if (!res.ok) throw new Error()
